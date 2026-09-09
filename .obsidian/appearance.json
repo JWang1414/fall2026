@@ -1,0 +1,11 @@
+{
+  "theme": "obsidian",
+  "monospaceFontFamily": "JetBrainsMono Nerd Font,Liberation Mono",
+  "textFontFamily": "FiraCode Nerd Font,Liberation Mono",
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "overrides"
+  ],
+  "baseFontSize": 15,
+  "accentColor": ""
+}
