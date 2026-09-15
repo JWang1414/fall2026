@@ -24,10 +24,9 @@ $$
 ---
 Want to show that the time complexity $T(n)$ is $\Theta(n)$.
 
-Lemma. $A[n-i+1]=i-1\implies A[n]+A[1]=n-1$
-- Express this portion a little more formally
+Lemma. For an array $A$ of size $n$, $A[n-i+1]=i-1\implies A[n]+A[1]=n-1$. Where $i\in \mathbb{N}$ in $[1, n]$.
 
-Define an array of size $n$ with indices $i$. Assume that the elements of this array are defined such that $A[n-i+1]=i-1$.
+Define an array of size $n$. Assume that the elements of this array are defined such that $A[n-i+1]=i-1$, where $i\in \mathbb{N}$ in $[1, n]$.
 
 When $i=1$,
 $$
@@ -45,24 +44,26 @@ As needed.
 
 Show $\Omega(n)$.
 
-Define an array $A$ of size $n$ such that the elements are $A[n-i+1]=i-1$. Note that this is the negation of the condition inside the inner loop. The inner loop will therefore always run $n$ times.
+Define an array $A$ of size $n$ such that the elements are $A[n-i+1]=i-1$. Note that this is the negation of the condition inside the inner loop. The inner loop will therefore run to completion, iterating $n$ times.
 
-By the lemma, however, $A[n]+A[1]=n-1$. The condition in the outer loop is fulfilled, and the function terminates in constant time.
+By the lemma, $A[n]+A[1]=n-1$. The condition in the outer loop is fulfilled, and the loop terminates in constant time.
 
-Therefore, FREAK may run at least $n$ iterations. $\Omega(n)$
+Since the outer loop will always terminate, $T(n)$ is at least $n$. FREAK is therefore $\Omega(n)$.
 
 Show $O(n)$.
 - Split this one into cases
 
-Define an array $A$ of size $n$.
+Define an array $A$ of size $n$, $j\in \mathbb{N}$ such that $0<j\leq n$.
 
-By observation, the inner loop will only complete all iterations if and only if $A[n-j+1]=j-1$. Where $j\in \mathbb{Z}$ ranges from $[1, n]$. Otherwise, the loop, and consequently the function, will terminate pre-maturely.
+Case 1: For all $j$, $A[n-j+1]=j-1$
 
-However, by the lemma, this also necessitates that $A[n]+A[1]=n-1$. Forcing the outer loop to terminate after running one time.
+By the lemma, this also necessitates that $A[n]+A[1]=n-1$. Forcing the outer loop to terminate after running one time. For the same reasons FREAK is $\Omega(n)$, the maximum number of iterations is $n+\text{constant}$.
 
-In the alternative case where $A[n-j+1]\neq j-1$, and the condition in the inner loop is not satisfied, the loop will once again terminate early in $\leq n$ iterations.
+Case 2: For at least one $j$, $A[n-j+1]\neq j-1$
 
-The maximum number of iterations in FREAK is therefore $n$ in the inner loop, and 1 in the outer loop. $O(n)$
+Then the inner loop, and consequently the function, will terminate in $\leq n$ iterations, without ever making it to the outer loop.
 
-I conclude that FREAK is $\Omega(n)$ and $O(n)$. FREAK is therefore $\Theta(n)$, as needed.
+The maximum number of iterations in FREAK is therefore $n$ in the inner loop, and some constant outside this loop. Therefore, FREAK is $O(n)$.
+
+Since FREAK is $\Omega(n)$ and $O(n)$, FREAK is $\Theta(n)$, as needed.
 # Question 2
