@@ -51,6 +51,27 @@ We would like to: search through the dictionary, insert something new, and remov
 Our first implementation of a dictionary will be done with a binary search tree.
 # Binary Search Trees
 ![[Pasted image 20260916155315.png]]
-An example of a binary search tree. Notice that the elements on the left are smaller than the root, and the elements on the right are the greater.
+An example of a binary search tree. Notice that, for each node: keys in the left subtree $\leq$ node's key $\leq$ keys in the right subtree.
 
-- Complete this section later
+In-order traversal is the method of traversal where one first recursively traverses the left subtree, then the node, and then the right subtree. For a BST, in-order traversal visits keys in ascending sorted order. From smallest to largest.
+# BST Operations
+- Search, Insert, and Delete
+
+To search for a key, simply check if $x$ is smaller or larger than the current node. If it is smaller, go left, larger, go right.
+- I will be using $x$ to refer to the value of interest
+
+Insert is much the same. If $x$ is smaller, go left, and larger, go right. Once you eventually reach a leaf of the tree, then $x$ can be added as a new node (to the left or right, if it's smaller or larger).
+
+Delete is slightly more complex.
+
+If a leaf is being deleted, then it can be removed without any hassle.
+
+If a node with one child is being deleted, then the deleted node must be replaced with the child (and its subtree).
+
+If a node with two children is being removed, then we must first find the successor for this node. This can be done by going one step to the right, and going all the way to the left, or vice versa. The successor will always:
+- Be the largest value smaller than the node, or the smallest value larger than the node
+- Have one child
+Now, copy the successor's key into the current node, and delete the successor node. Luckily for this, this problem reduces to one we have already solved before (the successor has at most one child).
+
+In the worst-case, the time complexity of these operations is $\Theta(n)$. This is because the maximum height of a BST with $n$ nodes is $n-1$. However, there are methods to ensure the height is $O(\log n)$.
+]
