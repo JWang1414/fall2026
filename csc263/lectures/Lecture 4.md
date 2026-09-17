@@ -74,4 +74,3 @@ If a node with two children is being removed, then we must first find the succes
 Now, copy the successor's key into the current node, and delete the successor node. Luckily for this, this problem reduces to one we have already solved before (the successor has at most one child).
 
 In the worst-case, the time complexity of these operations is $\Theta(n)$. This is because the maximum height of a BST with $n$ nodes is $n-1$. However, there are methods to ensure the height is $O(\log n)$.
-]
