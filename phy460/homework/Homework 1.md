@@ -58,3 +58,34 @@ $$
 $\sin x$ is negative for $-\left( 2n+\frac{1}{2} \right)\pi$ and positive for $-\left( 2n+\frac{3}{2} \right)\pi$. Where $n\in \mathbb{N}$. This roughly means that the fixed points with "even" $\pi$ are stable and the ones corresponding with "odd" $\pi$ are unstable.
 
 $e^{ x }-\cos x$ has an infinite number of fixed points when $e^{ x }=\cos x$. Moving from right to left, an unstable fixed point is found at $x=0$, and a stable fixed point at $x\approx-1.29$. The fixed points alternative between stable and unstable as you progress to the left (to $-\infty$). Roughly speaking, the fixed points can be approximated with $-\cos x$. Performing linear stability analysis reveals that the fixed points near $-\left( 2n+\frac{1}{2} \right)\pi$ are stable and unstable for $-\left( 2n+\frac{3}{2} \right)\pi$, where $n\in \mathbb{N}$. Roughly speaking, these correspond with "even" ($2n$) and "odd" ($2n+1$) fixed points.
+# Question 2
+$$
+	1-cN=1-x \implies cN=x
+$$
+$$
+	N = \frac{x}{c}
+$$
+$$
+	aN(1-cN) = a\left( \frac{x}{c} \right) \left( 1-c\left( \frac{x}{c} \right) \right) = \frac{a}{c}x(1-x)
+$$
+Scale this equation by a factor of $c /a$ and it reduces to the standard form.
+
+Integrate.
+$$
+	\frac{dx}{dt} = x(1-x) \implies \frac{1}{x(1-x)} \, dx = dt
+$$
+$$
+	\int_{x_{0}}^{x} \frac{1}{x(1-x)} \, dx = \int_{x_{0}}^{x} \frac{1}{x}- \frac{1}{1-x} \, dx = \ln\left( \frac{1-x_{0}}{x_{0}} \frac{x}{1-x} \right)
+$$
+$$
+	t = \ln\left( \frac{1-x_{0}}{x_{0}} \frac{x}{1-x} \right)
+$$
+Re-arrange,
+$$
+	x = \frac{e^{ t }}{k+e^{ t }}
+$$
+Where I have defined $k=(1-x_{0}) /x_{0}$. Multiply the top and bottom by $e^{ -t }$ to obtain:
+$$
+	x(t) = \frac{1}{1+ke^{ -t }}
+$$
+# Question 3
