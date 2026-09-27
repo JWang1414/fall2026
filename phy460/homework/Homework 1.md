@@ -89,3 +89,100 @@ $$
 	x(t) = \frac{1}{1+ke^{ -t }}
 $$
 # Question 3
+---
+a.
+$N$ is constant means that $\dot{N}=0$. Want to show that:
+$$
+	\dot{S}+\dot{I} + \dot{R}=0
+$$
+Equivalent to:
+$$
+	-\beta SI + \left[ \beta SI - \alpha I \right]  + \alpha I = -\beta SI + \beta SI - \alpha I  + \alpha I =0
+$$
+As needed.
+
+---
+b.
+$$
+	\dot{R} = \alpha I \implies I = \frac{\dot{R}}{\alpha}
+$$
+Sub into $\dot{S}$
+$$
+	\dot{S} = -\beta S\left( \frac{\dot{R}}{\alpha} \right) = -\frac{\beta}{\alpha} S\dot{R}
+$$
+$$
+	\frac{dS}{dt}=-\frac{\beta}{\alpha} S \frac{dR}{dt} \implies \frac{dS}{S}=-\frac{\beta}{\alpha} \frac{dR}{dt} dt
+$$
+Integrate both sides
+$$
+	\int_{S_{0}}^{S} \frac{1}{S} \, dS = \ln S - \ln S_{0}
+$$
+$$
+	\int -\frac{\beta}{\alpha} \, dR = -\frac{\beta}{\alpha}R
+$$
+Equate the two and re-arrange,
+$$
+	\ln S = -\frac{\beta}{\alpha}R + \ln S_{0} \implies S = e^{ -\beta R/\alpha + \ln S_{0} } = e^{ \ln S_{0} } e^{ -\beta R/\alpha }
+$$
+$$
+	S(t) = S_{0}\exp\left( -\frac{\beta}{\alpha}R(t) \right)
+$$
+As needed.
+
+---
+c.
+$$
+	S+I+R=N \implies I = N-S-R
+$$
+$$
+	= N-R-S_{0}\exp\left( -\frac{\beta}{\alpha} R(t) \right)
+$$
+Therefore,
+$$
+	\dot{R}=\alpha I = \alpha \left[ N-R-S_{0}\exp\left( -\frac{\beta}{\alpha} R(t) \right) \right]
+$$
+---
+d.
+$$
+	u = \frac{\beta}{\alpha}R(t)
+$$
+$$
+	\frac{dR}{dt} = \alpha N - \alpha R - S_{0}e^{ -u } = \alpha N - \frac{\alpha^{2}}{\beta}u - S_{0}e^{ -u }
+$$
+$$
+	\frac{1}{S_{0}} \frac{dR}{dt} = \frac{\alpha N}{S_{0}} - \frac{\alpha^{2}}{\beta S_{0}}u - e^{ -u }
+$$
+$$
+	\frac{du}{dt} \frac{dt}{d\tau} = \frac{1}{S_{0}} \frac{dR}{dt} = \frac{\alpha}{\beta S_{0}} \frac{du}{dt} \implies \frac{dt}{d\tau} = \frac{\alpha}{\beta S_{0}}
+$$
+$$
+	t= \frac{\alpha}{\beta S_{0}}\tau
+$$
+$$
+	a=\frac{\alpha N}{S_{0}} \qquad b = \frac{\alpha^{2}}{\beta S_{0}}
+$$
+$$
+	\frac{du}{d\tau} = a-bu-e^{ -u }
+$$
+- This is a very messy solution, and I don't know if it's right, but I'll go with it for now
+---
+e.
+Notice that $S$, $I$, $R$, $S_{0}$ must be positive. Therefore $b\geq0$.
+
+Initially, at $t=0$, $S=S_{0}$, $I=0$ and $R=0$. Therefore $N=S_{0}$.
+
+This means that $N /S_{0}\geq 1$
+- This is not the expression for $a$ that I found earlier
+
+---
+f.
+$$
+	a-bu-e^{ -u } =0 \implies a-bu = e^{ -u }
+$$
+Based on the restrictions $a\geq 1$ and $b\geq 0$, this function will have 1-2 fixed points.
+- In the case where there is just 1 fixed point, it is semi-stable
+	- Negative semi-stable, so moving towards the left
+- When there are 2 fixed points, there is an unstable point when $u<0$ and stable point when $u>0$
+
+---
+g.
