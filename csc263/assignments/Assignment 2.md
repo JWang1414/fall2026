@@ -113,3 +113,71 @@ $$
 As needed.
 - Maybe use a drawing to explain the height of $T$
 # Question 3
+---
+a.
+Check if $k$ is greater than the current key $u$. If $k>u$ then move to the right subtree, if $k<u$ then move to the left substree. Repeat this process until $k=u$, then $\text{node}(k)$ has been found, and the process terminates.
+
+After every step, a counter should be incremented by 1 to measure the distance between the root and $k$.
+
+PathLengthFromRoot($root$, $k$)
+```
+length = 0
+u = root
+while (k != key(u))
+	if k < key(u)
+		u = lchild(u)
+	else
+		u = rchild(u)
+	length += 1
+
+# Loop terminates when k = key(u)
+return length
+```
+
+In the worst-case, the node containing $k$ will be a leaf at the very bottom of the tree. This would take at most $h$ iterations to reach. Worst-case time complexity $O(h)$.
+
+---
+b.
+Compare $k$ and $m$ with the current key $u$. If $u<k<m$, then move to the right subtree. If $k<m<u$, then move to the left subtree. Repeat this process until $k\leq u\leq m$, then the first common parent of $k$ and $m$ has been found, and the process returns $\text{node}(u)$.
+
+FCP($root$, $k$, $m$)
+```
+u = root
+while (key(u) < k OR m < key(u))
+	if (key(u) < k)
+		u = rchild(u)
+	else
+		u = lchild(u)
+
+# Loop terminates when k <= u <= m
+return u
+```
+
+In the worst-case, $k$ or $m$ could be a leaf node at the bottom of the tree. it would take at most $h-1$ iterations to reach a comment parent. Worst-case time complexity $O(h)$.
+
+---
+c.
+Use FCP to find the first common parent of $k$ and $m$, I will call it $p$. Then, use PathLengthFromRoot on $k$, $m$, and $p$ to determine their path lengths from root. Then, the path length between $k$ and $m$ is:
+$$
+	(k_\text{length} - p_\text{length}) + (m_\text{length} - p_\text{length}) = k_\text{length} + m_\text{length} - 2p_\text{length}
+$$
+
+PathLength($root$, $k$, $m$)
+```
+# Find the common parent
+p = FCP(root, k, m)
+
+# Determine all path lengths
+k_len = PathLengthFromRoot(root, k)
+m_len = PathLengthFromRoot(root, m)
+p_len = PathLengthFromRoot(root, p)
+
+# Path length between k and m
+return k_len + m_len - 2*p_len
+```
+
+As established in the previous parts, the worst-case time complexity of FXP and PathLengthFromRoot are both $O(h)$. The worst-case time complexity of PathLength is therefore:
+$$
+	O(h) + 3\times O(h) \equiv  O(h)
+$$
+As needed.
