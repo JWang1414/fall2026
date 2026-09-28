@@ -62,3 +62,54 @@ $$
 $$
 The average cost of $k$ insertions is therefore $2k /k=2$. As needed.
 # Question 2
+My algorithm will search for the greatest key in $B_{1}$, or the smallest key in $B_{2}$. Once this key is found, the node is made into the new root, increasing the height of the tree by one. Once this is done, the two trees are merged together into a single binary search tree.
+
+Something like this:
+```
+while (there is a node to the right in B1 OR there is a node to the left in B2)
+	Go to the right subtree in B1
+	Go to the left subtree in B2
+
+if (largest in B1 was found)
+	Detatch the largest node
+	Reattach it's left subtree
+	Reattach the largest node as the root
+	Attach B2 to the largest node
+elif (smallest in B2 was found)
+	Ditto, with smallest node instead
+	...
+```
+- An image can be included to help the explanation
+## Worst-case running time
+For the sake of brevity, I will call the largest key/node in $B_{1}$ and the smallest key/node in $B_{2}$ the "extrema" key/node.
+
+The extrema key in $B_{1}$ must be found by searching through the tree. The extrema will always be located in the right-most node, and so can be found by repeatedly traversing to the right until I cannot anymore. In the worst case, this will take $h_{1}$ iterations.
+
+The same process is repeated to find the extrema node in $B_{2}$, which takes similarly takes $h_{2}$ iterations. Since both trees are traversed at the same time, and the loop breaks when any extrema node is found, this will take at worst $\min\{ h_{1}, h_{2} \}$ iterations. Time-complexity $O(\min\{ h_{1}, h_{2} \})$.
+
+Once the extrema key is found, it must be detatched and reattached to the current root node. Furthermore, the extrema node's subtree must also be reattached to a valid parent. This parent will be the extrema node's previous parent. During this process 2 pairs of pointers are changed. Time-complexity $O(1)$.
+
+Finally, the other tree must be merged with the modified tree. One new edge is established, and just one pointer is modified. Time-complexity $O(1)$.
+
+The worst-case run time of the full process is therefore:
+$$
+	O(\min\{ h_{1}, h_{2} \}) + O(1) + O(1) \equiv O(\min\{ h_{1}, h_{2} \})
+$$
+## Justify Correctness
+Assume $h_{1}\leq h_{2}$. The case when $h_{2}>h_{1}$ is identical, but flipped.
+
+In this case, the search for the largest key in $B_{1}$ is completed first. I will call this key $m$. Since $m$ is larger than any other key in $B_{1}$, the rest of $B_{1}$ may trivially be connected to the left-side of this node. The rest of $B_{1}$ is a valid BST, so the combination of the two results in another valid BST.
+
+The removal of $m$ may result in an orphaned subtree; the original left subtree of $m$. It can be attached to the original parent of $m$.
+
+When $m$ is moved to become the root node, the height of $B_{1}$ increased by 1. It is also possible that the re-connection of the orphaned subtree might decrease $B_{1}$'s height by 1. Overall, the new maximum height of $B_{1}$ is $h_{1}+1$.
+
+Now, $m$ is the root node of $B_{1}$, and has no right subtree. Attach $B_{2}$ here, which itself is a valid BST, and is guaranteed to have values all greater than $m$. Merging $B_{1}$ and $B_{2}$ in this way therefore results in a valid BST, $T$.
+
+Furthermore, the maximum height of $T$ must either be $h_{1}+1$ or $h_{2}+1$. That is, the height of $T$ is:
+$$
+	\max\{ h_{1}+1, h_{2}+1 \} = \max\{ h_{1}, h_{2} \}+1
+$$
+As needed.
+- Maybe use a drawing to explain the height of $T$
+# Question 3
