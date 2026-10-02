@@ -183,6 +183,93 @@ Based on the restrictions $a\geq 1$ and $b\geq 0$, this function will have 1-2 f
 - In the case where there is just 1 fixed point, it is semi-stable
 	- Negative semi-stable, so moving towards the left
 - When there are 2 fixed points, there is an unstable point when $u<0$ and stable point when $u>0$
+# Question 4
+$$
+	\dot{x}=1+rx+x^{2}
+$$
+- Adjusting the value of $r$ reveals that there are two possible saddle-node bifurcations
+$$
+	\dot{x}=r-\cosh x \implies r=\cosh(x)
+$$
+- Another saddle-node bifurcation. This time there's just one
+- They join together when $r=1$
+$$
+	\dot{x}=r^{2}-x^{2} \implies (r+x)(r-x)=0
+$$
+- There is a saddle-node bifurcation at $x=0$ and $r=0$. However, it does not disappear. It is originally two fixed points, merges into one, and then splits into two again
+$$
+	\dot{x}=x(r-e^{ x }) \implies x=0, r=e^{ x }
+$$
+- Little stranger. I think these are still saddle node bifurcations. The stability of the two bifurcations swap
+- The bifurcation graph seems to look like a logarithmic graph
+- I tried to use arrows to indicate stability on the axis
+$$
+	\dot{x}=rx-\ln(1+x) \implies rx=\ln(1+x)
+$$
+- Very similar to the last one, but the logarithmic bifurcation line is flipped upside-down
+$$
+	\dot{x} = x+\tanh(rx) \implies -x=\tanh(rx)
+$$
+- This one is a subcritical pitchfork bifurcation
+$$
+	\dot{x} = rx+ \frac{x^{3}}{1+x^{2}} \implies -rx=\frac{x^{3}}{1+x^{2}}
+$$
+- Another subcritical pitchfork bifurcation
+# Question 5
+$$
+	\dot{\theta} = \sin ^{3}\theta
+$$
+- This one is quite simple, it's perfectly periodic on the $2\pi$ scale
+- It has 2 fixed points, be careful about the one at the ends. That really represents just one fixed point
+$$
+	\dot{\theta} = \sin\theta + \cos\theta
+$$
+- Amplitude is a little bigger
+- Has 2 fixed points
+- Interval looks a little weird
+$$
+	\dot{\theta} = \sin(k\theta)
+$$
+- The number of fixed points depends on $k$
+- Otherwise, relatively normal. Amplitude is 1, $k$ just changes the oscillation speed
+# Question 6
+$$
+	\dot{\theta} = \frac{\sin \theta}{\mu+\cos \theta}
+$$
+The fixed points show up at predictable locations $\sin\theta=0$. That is, the fixed points are always located at 0 and $\pi$.
 
----
-g.
+The denominator determine the behaviour of this vector field, and is how bifurcations occur. It is only when $\mu+\cos \theta$ is well defined that the vector field as a whole is well defined.
+
+- Are the asymptotes classified as fixed points? I don't know
+
+Case $k<-1$ or $k>1$
+- There are 3 well defined fixed points
+
+Case $k=-1$
+- The fixed point at $\theta=0$ disappears, it is replaced with an asymptote
+- There is just one remaining fixed point at $\theta=\pi$
+
+Case $-1<k<1$
+- The two fixed points $\theta=0, \pi$ remain intact
+- There are two asymptotes between the fixed points
+
+Case $k=1$
+- The fixed point at $\theta=\pi$ disappears, replaced with an asymptote
+- There is just one remaining fixed point at $\theta=0$
+
+$$
+	\dot{\theta} = \mu+\sin\theta + \cos(2\theta)
+$$
+Bifurcations occur at $\theta=1.125, 0, 2$.
+
+At $\theta=1.125$ there are two saddle node bifurcations that split from each other. There are two fixed points in total
+
+As a result, when $1.125<\theta<0$ there are 4 fixed points
+
+At $\theta=0$ two of two fixed points merge together and disappear. There are three fixed points in total
+
+When $0<\theta<2$ there are two fixed points remaining from the two saddle nodes
+
+At $\theta=2$ they merge into one fixed point.
+
+In all other regions there are 0 fixed points
