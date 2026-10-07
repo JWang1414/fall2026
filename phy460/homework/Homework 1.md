@@ -180,96 +180,84 @@ $N$ is constant means that $\dot{N}=0$. Want to show that:
 $$
 	\dot{S}+\dot{I} + \dot{R}=0
 $$
-Equivalent to:
+By direct substitution:
 $$
 	-\beta SI + \left[ \beta SI - \alpha I \right]  + \alpha I = -\beta SI + \beta SI - \alpha I  + \alpha I =0
 $$
-As needed.
-
 ---
 b.
+Re-arrange the expression for $\dot{R}$ in terms of $I$:
 $$
 	\dot{R} = \alpha I \implies I = \frac{\dot{R}}{\alpha}
 $$
-Sub into $\dot{S}$
+Substitute into $\dot{S}$:
 $$
 	\dot{S} = -\beta S\left( \frac{\dot{R}}{\alpha} \right) = -\frac{\beta}{\alpha} S\dot{R}
 $$
+Swapping notation to prepare for an integral:
 $$
-	\frac{dS}{dt}=-\frac{\beta}{\alpha} S \frac{dR}{dt} \implies \frac{dS}{S}=-\frac{\beta}{\alpha} \frac{dR}{dt} dt
+	\frac{dS}{dt}=-\frac{\beta}{\alpha} S \frac{dR}{dt} \implies \frac{dS}{S}=-\frac{\beta}{\alpha} \frac{dR}{dt} dt = -\frac{\beta}{\alpha} \, dR
 $$
 Integrate both sides
 $$
-	\int_{S_{0}}^{S} \frac{1}{S} \, dS = \ln S - \ln S_{0}
+	\int_{S_{0}}^{S} \frac{1}{S} \, dS = \ln S - \ln S_{0} \qquad \int_{0}^{R} -\frac{\beta}{\alpha} \, dR = -\frac{\beta}{\alpha}R
 $$
-$$
-	\int -\frac{\beta}{\alpha} \, dR = -\frac{\beta}{\alpha}R
-$$
-Equate the two and re-arrange,
+Where I have assumed that $R_{0}=0$. Equate the two and re-arrange,
 $$
 	\ln S = -\frac{\beta}{\alpha}R + \ln S_{0} \implies S = e^{ -\beta R/\alpha + \ln S_{0} } = e^{ \ln S_{0} } e^{ -\beta R/\alpha }
 $$
+Yielding the final expression:
 $$
 	S(t) = S_{0}\exp\left( -\frac{\beta}{\alpha}R(t) \right)
 $$
-As needed.
-
 ---
 c.
+Going back to the expression for $N$:
 $$
 	S+I+R=N \implies I = N-S-R
 $$
+Substituting in what was found in part b:
 $$
-	= N-R-S_{0}\exp\left( -\frac{\beta}{\alpha} R(t) \right)
+	I = N-R-S_{0}\exp\left( -\frac{\beta}{\alpha} R(t) \right)
 $$
-Therefore,
+According to the definition of $\dot{R}$:
 $$
 	\dot{R}=\alpha I = \alpha \left[ N-R-S_{0}\exp\left( -\frac{\beta}{\alpha} R(t) \right) \right]
 $$
 ---
 d.
-$$
-	\alpha=l \qquad R=z \qquad S_{0}=x_{0} \qquad \beta=k
-$$
-$$
-	u=\frac{kz}{l} \qquad \tau = kx_{0}t \qquad a=\frac{N}{x_{0}} \qquad b=\frac{l}{kx_{0}}
-$$
+Define the following variables:
 $$
 	u=\frac{\beta}{\alpha}R(t) \qquad \tau= \beta S_{0}t \qquad a=\frac{N}{S_{0}} \qquad b=\frac{\alpha}{\beta S_{0}}
 $$
-Substituting in $u$ we have:
+Substituting in these variables, $\dot{R}$ becomes:
 $$
-	\frac{dR}{dt} = \alpha \left( N - \frac{\alpha}{\beta}u - S_{0}e^{ -u } \right) = \alpha S_{0} \left( \frac{N}{S_{0}} - \frac{\alpha}{\beta S_{0}}u - e^{ -u } \right)
+	\begin{align}
+		\frac{dR}{dt} & = \alpha \left( N - \frac{\alpha}{\beta}u - S_{0}e^{ -u } \right) \\
+		 & = \alpha S_{0} \left( \frac{N}{S_{0}} - \frac{\alpha}{\beta S_{0}}u - e^{ -u } \right) \\
+		 \frac{1}{\alpha S_{0}} \frac{dR}{dt} & = a-bu-e^{ -u }
+	\end{align}
 $$
+Note that:
 $$
-	\frac{1}{\alpha S_{0}} \frac{dR}{dt} = a-bu-e^{ -u }
-$$
-Left-side:
-$$
-	\frac{du}{dt} = \frac{\beta}{\alpha} \frac{dR}{dt} \implies \frac{dR}{dt} = \frac{\alpha}{\beta} \frac{du}{dt}
-$$
-$$
-	\frac{1}{\alpha S_{0}} \frac{dR}{dt} = \frac{1}{\alpha S_{0}} \frac{\alpha}{\beta} \frac{du}{dt} = \frac{1}{\beta S_{0}} \frac{du}{dt} = \frac{du}{d\tau}
+\frac{du}{d\tau} = \frac{1}{\beta S_{0}} \frac{\beta}{\alpha} \frac{dR}{dt} = \frac{1}{\alpha S_{0}} \frac{dR}{dt}
 $$
 Therefore:
 $$
 	\frac{du}{d\tau} = a-bu-e^{ u }
 $$
-As needed.
-
 ---
 e.
-Note that:
+Recall that $a$ and $b$ are defined to be:
 $$
 	a=\frac{N}{S_{0}} \qquad b=\frac{\alpha}{\beta S_{0}}
 $$
-Note that $S$, $I$, $R$, $S_{0}$ are necessarily positive to have physical meaning. Additionally, recall that $\alpha$ and $\beta$ are both defined as positive constants. $b$ must therefore also be a positive constant $b>0$.
+$S$, $I$, $R$, $S_{0}$ are necessarily positive. Otherwise they would have no physical meaning. Additionally, $\alpha$ and $\beta$ are both defined to be positive constants. $b$ must therefore also be a positive constant $b>0$.
 
-At $t=0$,
+For $a$, notice that at $t=0$,
 $$
-	a=\frac{N}{S_{0}} = \frac{S_{0}+I(0)+R(0)}{S_{0}} \geq 1
+	a=\frac{N}{S_{0}} = \frac{S_{0}+I_{0}+R_{0}}{S_{0}} \geq 1
 $$
-
 ---
 f.
 $$
