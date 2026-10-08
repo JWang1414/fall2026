@@ -84,95 +84,57 @@ $$
 	x(t) = \frac{1}{1+ke^{ -t }}
 $$
 # Question 4
-$$
-	\dot{x}=1+rx+x^{2}
-$$
-- Adjusting the value of $r$ reveals that there are two possible saddle-node bifurcations
-$$
-	\dot{x}=r-\cosh x \implies r=\cosh(x)
-$$
-- Another saddle-node bifurcation. This time there's just one
-- They join together when $r=1$
-$$
-	\dot{x}=r^{2}-x^{2} \implies (r+x)(r-x)=0
-$$
-- There is a saddle-node bifurcation at $x=0$ and $r=0$. However, it does not disappear. It is originally two fixed points, merges into one, and then splits into two again
-$$
-	\dot{x}=x(r-e^{ x }) \implies x=0, r=e^{ x }
-$$
-- Little stranger. I think these are still saddle node bifurcations. The stability of the two bifurcations swap
-- The bifurcation graph seems to look like a logarithmic graph
-- I tried to use arrows to indicate stability on the axis
-$$
-	\dot{x}=rx-\ln(1+x) \implies rx=\ln(1+x)
-$$
-- Very similar to the last one, but the logarithmic bifurcation line is flipped upside-down
-$$
-	\dot{x} = x+\tanh(rx) \implies -x=\tanh(rx)
-$$
-- This one is a subcritical pitchfork bifurcation
-$$
-	\dot{x} = rx+ \frac{x^{3}}{1+x^{2}} \implies -rx=\frac{x^{3}}{1+x^{2}}
-$$
-- Another subcritical pitchfork bifurcation
+The vector fields and bifurcation diagrams for $\dot{x}=1+rx+x^{2}$. There are two saddle-node bifurcations which occur at $r=\pm 2$. The dotted lines indicate unstable fixed points, and the solid lines stable ones.
+
+The vector fields and bifurcation diagrams for $\dot{x}=r-\cosh(x)$. There is one saddle-node bifurcation at $r=1$.
+
+The vector fields and bifurcation diagrams for $\dot{x}=r^{2}-x^{2}=(r+x)(r-x)$. There is a transcritical bifurcation at $r=0$.
+
+The vector fields and bifurcation diagrams for $\dot{x}=x(r-e^{ x })$. Note that there is a permanent fixed point at $x=0$, I have notated the stability of this fixed point along the axis with small arrows. There is a transcritical bifurcation at $r=1$.
+
+The vector fields and bifurcation diagrams for $\dot{x}=rx-\ln(1+x)$. Once again, there is a permanent fixed point at $x=0$. There is a transcritical bifurcation at $r=1$.
+
+The vector fields and bifurcation diagrams for $\dot{x}=x+\tanh(rx)$. There is a subcritical pitchfork bifurcation at $r=-1$.
+
+The vector fields and bifurcation diagrams for $\dot{x}=rx+x^{3}/(1+x^{2})$. There is a subcritical pitchfork bifurcation at $r=0$. Unlike the previous bifurcation, the outer two prongs of the pitchfork diverge to infinity at $r=-1$.
 # Question 5
-$$
-	\dot{\theta} = \sin ^{3}\theta
-$$
-- This one is quite simple, it's perfectly periodic on the $2\pi$ scale
-- It has 2 fixed points, be careful about the one at the ends. That really represents just one fixed point
-$$
-	\dot{\theta} = \sin\theta + \cos\theta
-$$
-- Amplitude is a little bigger
-- Has 2 fixed points
-- Interval looks a little weird
-$$
-	\dot{\theta} = \sin(k\theta)
-$$
-- The number of fixed points depends on $k$
-- Otherwise, relatively normal. Amplitude is 1, $k$ just changes the oscillation speed
+Phase portait on the circle for $\dot{\theta}=\sin ^{3}\theta$. This vector field has period $2\pi$. There is an unstable fixed point at $\theta=0$ and stable fixed point at $\theta=\pi$.
+
+Phase portait on the circle for $\dot{\theta}=\sin\theta + \cos\theta$. Vector field has period $2\pi$. Stable fixed point at $3\pi /4$ and unstable fixed point at $7\pi /4$.
+
+Phase portait on the circle for $\dot{\theta}=\sin(k\theta)$. Vector field now has period $2\pi /k$. Unstable fixed point at $\theta=0$ and unstable fixed point at $\theta=\pi /k$.
+
 # Question 6
 $$
 	\dot{\theta} = \frac{\sin \theta}{\mu+\cos \theta}
 $$
-The fixed points show up at predictable locations $\sin\theta=0$. That is, the fixed points are always located at 0 and $\pi$.
+Since $\sin\theta$ is in the numerator, there are permanent fixed points at $\sin\theta=0$. That is, periodically with period $\pi$. These fixed points will oscillate in stability. The denominator incurs more complex behaviour within $-1<\mu<1$. For simplicity, I will model the asymptotes the vector field as fixed points.
 
-The denominator determine the behaviour of this vector field, and is how bifurcations occur. It is only when $\mu+\cos \theta$ is well defined that the vector field as a whole is well defined.
+Case: $\mu<-1$
+- Stable fixed point at $\theta=0$
+- Unstable fixed point at $\theta=\pi$
 
-- Are the asymptotes classified as fixed points? I don't know
+Case: $-1<\mu<1$
+- Four fixed points in total
+- Unstable fixed point at $\theta=0$
+- Stable fixed point at $\theta=\pi$
+- Two stable fixed points moving from $\theta=0$ to $\theta=\pi$
+- This case can be imagined as two supercritical pitchfork bifurcations. The bifurcations occur at $\mu=-1$ and $\mu=1$. The two pitchforks "merge together"
 
-Case $k<-1$ or $k>1$
-- There are 3 well defined fixed points
-
-Case $k=-1$
-- The fixed point at $\theta=0$ disappears, it is replaced with an asymptote
-- There is just one remaining fixed point at $\theta=\pi$
-
-Case $-1<k<1$
-- The two fixed points $\theta=0, \pi$ remain intact
-- There are two asymptotes between the fixed points
-
-Case $k=1$
-- The fixed point at $\theta=\pi$ disappears, replaced with an asymptote
-- There is just one remaining fixed point at $\theta=0$
+Case: $\mu>1$
+- Unstable fixed point at $\theta=0$
+- Stable fixed point at $\theta=\pi$
 
 $$
 	\dot{\theta} = \mu+\sin\theta + \cos(2\theta)
 $$
-Bifurcations occur at $\theta=1.125, 0, 2$.
+This vector field has a series of saddle-node bifurcations as $\mu$ is varied. Specifically, bifurcations occur at $\mu=-1.125, 0, 2$.
 
-At $\theta=1.125$ there are two saddle node bifurcations that split from each other. There are two fixed points in total
+At $\mu=-1.125$ there are two saddle node bifurcations with two semi-stable fixed points in total. When $-1.125<\mu<0$, there are four fixed points. Two stable and two unstable fixed points.
 
-As a result, when $1.125<\theta<0$ there are 4 fixed points
+At $\mu=0$, two of the fixed points merge into one semi-stable fixed point. The two annihilate each other, in another saddle-node bifurcation. As a result, when $0<\mu<2$, there is one stable fixed point, and one unstable fixed point.
 
-At $\theta=0$ two of two fixed points merge together and disappear. There are three fixed points in total
-
-When $0<\theta<2$ there are two fixed points remaining from the two saddle nodes
-
-At $\theta=2$ they merge into one fixed point.
-
-In all other regions there are 0 fixed points
+At $\mu=2$, the final two remaining fixed points merge together in another saddle-node bifurcation. There is now just one semi-stable fixed point. In all other cases, $\mu<-1.125$ and $\mu>2$, there are no fixed points.
 # Question 3
 ---
 a.
@@ -194,7 +156,7 @@ Substitute into $\dot{S}$:
 $$
 	\dot{S} = -\beta S\left( \frac{\dot{R}}{\alpha} \right) = -\frac{\beta}{\alpha} S\dot{R}
 $$
-Swapping notation to prepare for an integral:
+Swap notation to prepare for an integral:
 $$
 	\frac{dS}{dt}=-\frac{\beta}{\alpha} S \frac{dR}{dt} \implies \frac{dS}{S}=-\frac{\beta}{\alpha} \frac{dR}{dt} dt = -\frac{\beta}{\alpha} \, dR
 $$
@@ -260,20 +222,14 @@ $$
 $$
 ---
 f.
+Re-arrange so it's easier to analyze:
 $$
 	a-bu-e^{ -u } =0 \implies a-bu = e^{ -u }
 $$
 Since $a\geq 1$ and $b> 0$, this function will have 1-2 fixed points.
 
-Case: Single fixed point
-- Negative, semi-stable fixed point
-- Occurs at $u=0$ when $a=1$ and $b=1$
+When $a=1$ and $b=1$, there is a single semi-stable fixed point at $u=0$. Otherwise, there are two fixed points. An unstable fixed point at $u<0$, and a stable fixed point at $u>0$.
 
-Case: Two fixed points, $b>1$
-- Unstable fixed point $u<0$ and stable fixed point $u>0$
-
-Case: Two fixed points, $b<1$
-- Unstable fixed point $u<0$ and stable fixed point $u>0$
 ---
 g.
 Recall from the definition of $u$ we have:
@@ -282,13 +238,9 @@ $$
 $$
 Compute the first derivative:
 $$
-	\dot{u} = \frac{\beta}{\alpha}\dot{R} = \beta I =0
+	\dot{u} = \frac{\beta}{\alpha}\dot{R} = \beta I
 $$
-Note that $\dot{u}$ is proportional to $\dot{R}$ and $I$. So their maximums will occur at the same time. The maximum of $u'(\tau)$ occurs when:
-$$
-	u''(\tau) =0 \implies \frac{d}{d\tau} \frac{du}{d\tau} = \frac{d}{d\tau} (a-bu-e^{ -u }) = -b \frac{du}{d\tau} + e^{ -u } \frac{du}{d\tau} = \frac{du}{d\tau}(e^{ -u }-b) =0
-$$
-So when $du /d\tau=0$ or $u=\ln(1 /b)$.
+Note that $\dot{u}$ is proportional to $\dot{R}$ and $I$. So their extrema will occur at the same time.
 
 ---
 h.
@@ -298,7 +250,7 @@ $$
 $$
 Which tells us that the critical points of $du /d\tau$ occur when $du /d\tau$ itself is 0, or when $u=\ln(1 /b)$. The first case corresponds with the roots of $du /d\tau$, and so the non-zero extrema of $du /d\tau$ occur exclusively in the second case.
 
-At $t=0$, $R(t)\approx 0\implies u\approx0$. So,
+At $t=0$, assume $R(t)=0$ and so $u=0$.
 $$
 	\frac{d^{2}u}{d\tau^{2}} \bigg|_{t=0} = (a-0-e^{ 0 })(e^{ 0 }-b) = (a-1)(1-b)
 $$
@@ -316,7 +268,7 @@ By the same logic used in part h,
 $$
 	\frac{d^{2}u}{d\tau^{2}} \bigg|_{t=0} = (a-1)(1-b) <0
 $$
-In the case when $b>1$. Additionally, $\ln(1 /b)<0$. Unlike the previous case, starting at $t=0$, $\dot{u}$ is an always decreasing function, with a maximum that occurs at a non-physical state. This means that the severity of the disease will never increase, and so $t_\text{peak}=0$.
+In the case when $b>1$. Additionally, $\ln(1 /b)<0$. Unlike the previous case, starting at $t=0$, $\dot{u}$ is always decreasing for $t>0$. This means that the severity of the disease will never increase, and so $t_\text{peak}=0$.
 
 ---
 j.
