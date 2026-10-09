@@ -7,5 +7,7 @@
     "overrides"
   ],
   "baseFontSize": 15,
-  "accentColor": ""
+  "accentColor": "",
+  "showViewHeader": true,
+  "showRibbon": true
 }
