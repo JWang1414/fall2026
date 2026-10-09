@@ -39,4 +39,36 @@ The lowest energy excitation is when one atom is flipped relative to the ground 
 
 Another possible state is all down on the left, and all up on the right. This is called a *kink*, or *topological soliton*.
 
+One can imagine mapping these infinities to the up or down spin. This is essentially just a map from two points to two points. $S^{0}_{\infty}\to S^{0}_\text{vac}$
+
 Magnons cost a finite energy to destroy, or flip back. You cannot destroy a kink, because there is an infinite number of spin up/downs. You need infinite energy.
+- The case with the magnons is called *topologically trivial*, and the case with the kinks is called *topologically protected*
+- The second is called a *topological soliton* because it cannot be easily destroyed
+
+One can further imagine stretching the ising model with a kink into 2D. Then, the swap from up to down becomes a line. Everything on the left of the 2D plane is up, and on the right is down. Replicate this in 3D, and it becomes a surface. This break between up and down, whether it be a line or surface, is what we call a *domain wall*.
+
+This is a continuum mock-up of the ising model:
+$$
+	E = \int \left( \frac{1}{2}\left( \frac{ \partial \phi(x) }{ \partial x } \right) ^{2}+\frac{\lambda}{4}(\phi^{2}(x)-1) \right) \, dx
+$$
+See that the energy is lowest when,
+$$
+	E=0 \implies \phi^{2}-1=0 \implies \phi = \pm 1
+$$
+Which are the ground states. Furthermore,
+$$
+	\frac{ \partial \phi }{ \partial x } =0
+$$
+The combination of these conditions is intended to tell us that $\phi$ will eventually be some constant with $\pm 1$, because this is the case when $E$ is finite.
+
+Now lets expand this model into 2D, so that we have $S^{1}_{\infty}\to S^{1}_\text{vacua}$.
+$$
+	E = \iint (\nabla \phi)(\nabla \phi)^* + \lambda(\phi^*\phi-1)^{2} \, dx \, dy
+$$
+Which once again tells us that for finite energy $\lvert \phi \rvert=1$ and $\phi=\text{const.}$ So the ground states form a circle in this plane.
+
+We say that the space of the vacua $S^{1}_{\phi_{1}}$ is $\lvert \phi \rvert=1$. Non-trivial maps $S^{1}\to S^{1}_{\phi}$ exist.
+$$
+	\phi|_{\lvert \vec{x}\to \infty \rvert } = e^{ in\theta }
+$$
+Something about how winding in $\phi$ will result in $n$ winds in the map.
