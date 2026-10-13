@@ -6,7 +6,7 @@ We would like $\Theta(1)$ expected time for each input word, and $\Theta(1)$ wor
 
 We will use a hash table $T$ of size $m$. Each entry will be a word, paired with its count.
 
-Assume SUHA hash function, that can be done in constant time, so that the entries are evenly distributed across the hash table, thus achieving the $\Theta(1)$ look-up times. Furthermore, note that $m\in \Omega(l)$ in order to achieve our needed running time.
+Assume SUHA hash function, that can be done in constant time, so that the entries are evenly distributed across the hash table, thus achieving the $\Theta(1)$ look-up times. Furthermore, note that $m\propto l$ in order to achieve our needed running time.
 
 Now, we will use a direct-access array $A$, accessed with each character from a-z. $A[c]$, for example, gives us the most frequent word starting with $c$.
 

@@ -84,3 +84,70 @@ To compute the average, each accumulation and calculation associated with the av
 $$
 	O(\log n) \times O(1) \in O(\log n)
 $$
+# Question 3
+---
+a.
+Define a hash table $\beta$ of size $m\propto n$ (with chain, or linked list entries). Assume this hash table uses a constant-time SUHA hash function. The entries in $\beta$ are identical to the entries in $B$. This may be accomplished by hashing each entry in $B$ to $\beta$.
+
+Now, to count the size of the set $D$, loop through the entries of $A$, and search for them in $\beta$. Define the accumulator variable $a=0$. If some entry $A[i]\in \beta$, then $a$ remains unchanged. If $A[i]\not\in \beta$, then $a\to a+1$.
+
+Return $a$.
+
+NoOverlap(A, B)
+```
+// Hash the values of B into beta
+beta = Hash table of size m
+for entry in B:
+	beta.insert(entry)
+
+// Compute the size of the set D
+a = 0
+for e in A:
+	if e is NOT in chain beta[hash(e)]:
+		a += 1
+
+return a
+```
+---
+b.
+Assume a constant-time SUHA hash function that evenly distributes entries in $\beta$. I also assume $m\propto n$ or $m\in \Omega(n)$ so that the chains in $\beta$ are short. The combination of these assumptions results in constant-time searches through $\beta$.
+
+To hash the values of $B$ into $\beta$:
+1. $\beta$ is initialized as an empty hash table
+2. All $n$ entries in $B$ are looped over and hashed into $\beta$. From my assumption of constant-time SUHA, each insert takes constant time.
+
+The running time of this step is:
+$$
+	1+n\times 1 = n+1 \in O(n)
+$$
+
+To compute the size of the set $D$:
+1. $a$ is initialized at 0
+2. All $n$ entries in $A$ are iterated over
+3. If the entry $e$ is not found to be inside $\beta$, then $a$ is incremented by 1. Recall that my assumptions result in constant-time searches through $\beta$.
+
+The running time of this step is:
+$$
+	1+n\times 1 = n+1 \in O(n)
+$$
+The time complexity of the full algorithm is therefore:
+$$
+	O(n) + O(n) \implies O(n)
+$$
+---
+c.
+In the worst-case, all entries from $B$ are hashed into the same bucket in $\beta$. This results in a chain of length $n$, with associated search time $O(n)$.
+
+Hashing the values from $B$ into $\beta$ remains the same, and runs in $O(n)$ time. However, since searching is now $O(n)$, the running time of the second step is modified to:
+$$
+	1 + n \times n = n^{2}+1 \in O(n^{2})
+$$
+For example, imagine if all the values in $A$ and $B$ hash to the same bucket. However, none of the values in $A$ are in $B$. Then, for each search, the entire chain at this bucket must be looked through before verifying that $e$ is indeed not in $\beta$ (and by extension $B$). This means for each of the $n$ entries in $A$, the search takes at least $n$ iterations. The running time is therefore at least:
+$$
+	1+n\times n = n^{2}+1 \in \Omega(n^{2})
+$$
+I conclude:
+$$
+	O(n^{2}) \wedge \Omega(n^{2}) \implies \Theta(n^{2})
+$$
+]
