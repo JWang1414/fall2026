@@ -53,3 +53,12 @@ $$
 	\end{align}
 $$
 Notice that there are fixed points $\sin \phi=k$. Recall that $k$ is the ratio between the speed of the duck and the speed of the dog. These fixed points correspond with the point where the dog is slower than the duck, and both of them wander around in circles forever. Neither of them getting closer to the other.
+# Conditions Limit Cycles Exist
+There are three conditions telling us no limit cycles exist, and just one telling us limit cycles do exist. We begin with the former.
+
+If $\dot{\vec{x}}=\vec{v}(\vec{x})$ and $\vec{v}(\vec{x})=\nabla V(\vec{x})$. That is, the vector field has a potential function, then limit cycles cannot exist.
+
+$\dot{\vec{x}}=\vec{v}(\vec{x})$, suppose $\vec{x}_{*}$ is a fixed point such that $\vec{v}(\vec{x}_{*})=0$. A Lyapunov function is a function $V(\vec{x})$ such that $V(\vec{x})>0$, $\forall \vec{x}\neq \vec{x}_{*}$ and $V(\vec{x})$ decreases along the flow. That is, $\frac{d}{dt}V(\vec{x}(t))<0$ for $\vec{x}(t)$ obeying $\dot{\vec{x}}=\vec{v}(\vec{x})$.
+- Basically, is there exists a Lyapunov function like this, then there is no limit cycle
+
+For $\dot{\vec{x}}=\vec{v}(\vec{x})$ in a simply connected region of $\mathbb{R}^{2}$. Suppose there exists a function $g(\vec{x})$ such that $\nabla \cdot(\dot{g}\vec{x})=\nabla(g(\vec{x})\vec{v}(\vec{x}))$ is sign definite in $D$. Then there is no limit cycle in $D^{2}$.
