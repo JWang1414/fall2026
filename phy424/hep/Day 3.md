@@ -10,7 +10,7 @@ Discussion with TA.
 - The momentum measured from Traxis is independent of the mass of the particle. There is an equation for it somewhere in the lab manual
 	- Has to do with the radius of the curvature, and a constant multiplier
 # 9:46
-Image measurements. 20 25 40792, rake 0. In fact this collision is further to the right than rake 0, but just by a little bit.
+Image measurements. 20 254-792, rake 0. In fact this collision is further to the right than rake 0, but just by a little bit.
 
 ![[Pasted image 20261016094908.png]]
 A screenshot of the several pronged collision I will be measuring.
