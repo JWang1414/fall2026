@@ -31,3 +31,4 @@ $$
 	\end{align}
 $$
 In the limit of large $\mu$, $\dot{x}$ is very large, and $\dot{y}$ is very small. What happens is that you shoot over to the nullcline $y=F(x)$, and then get locked into a limit cycle.
+- I am probably going to have to update this section with a much more detailed analysis over reading week
