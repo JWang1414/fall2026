@@ -27,8 +27,14 @@ It is pretty challenging to draw intuitive diagrams of the bifurcations, because
 
 Recall that fixed points appear when the nullclines intersect. So we can see where bifurcations might appear by seeing how the nullclines change as we alter some parameter.
 
-The same transcritical and pitchfork bifurcations from 1D translate pretty 1-to-1 in 2D. However, the most interesting case occurs for *Hopfield bifurcations*, which include limit cycles.
+![[Pasted image 20261027181429.png]]
+An example of a saddle-node bifurcation in 2D.
 
+![[Pasted image 20261027181647.png]]
+An example of a supercritical pitchfork in 2D.
+
+The same transcritical and pitchfork bifurcations from 1D translate pretty 1-to-1 in 2D. However, the most interesting case occurs for *Hopfield bifurcations*, which include limit cycles.
+# Hopfield Bifurcations
 As an example, we will study a supercritical Hopfield bifurcation:
 $$
 	\begin{align}
@@ -36,6 +42,10 @@ $$
 	\dot{\theta} & = \omega+br^{2}
 	\end{align}
 $$
+
+![[Pasted image 20261027182212.png]]
+As $\mu$ is adjusted, the spiral swaps from stable to unstable.
+
 Now, convert to Cartesian coordinates:
 $$
 	\begin{bmatrix}
@@ -69,6 +79,10 @@ $$
 	\end{align}
 $$
 See that when $\mu>0$ there are no fixed points in $r$, but there is a fixed point at $\sqrt{ \lvert \mu \rvert }$ when $\mu<0$.
+
+Generally speaking, for supercritical Hopfield bifurcations:
+1. The size of the limit cycle grows continuously from zero, and increases proportional to $\sqrt{ \mu-\mu_{c} }$ for $\mu$ close to $\mu_{c}$
+2. The frequency of the limit cycle is given approximately by $\omega=\mathrm{Im}\lambda$, evaluated at $\mu=\mu_{c}$. The formula is exact at the birth of the limit cycle, and correct within $O(\mu-\mu_{c})$ for $\mu$ close to $\mu_{c}$. The period is therefore $T=(2\pi /\mathrm{Im}\lambda)  + O(\mu-\mu_{c})$
 
 Lets look at another equation. This time, we will introduce a new way of determining if a system possess a limit cycle.
 $$
