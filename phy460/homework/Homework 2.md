@@ -141,7 +141,7 @@ Has two eigenvalues $\lambda$ and $\lambda+y^{2}$, with two different eigenvecto
 # Question 2 (Done)
 ![[Pasted image 20261028205045.png]]
 a.
-- Intuitively, it doesn't look like it. Since $-k\theta$ is linear, and so doesn't have a unique value on the circle
+$-k\theta$ is linear and therefore has no unique value on the circle. A well-defined vector field doesn't exist on the circle, so this problem should be visualized on the line.
 
 ---
 b.
