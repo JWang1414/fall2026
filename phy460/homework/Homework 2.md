@@ -138,7 +138,7 @@ $$
 $$
 Has two eigenvalues $\lambda$ and $\lambda+y^{2}$, with two different eigenvectors.
 - I have no idea if this is right. I feel like it's wrong
-# Question 2 (Done)
+# Question 3 (Done)
 ![[Pasted image 20261028205045.png]]
 a.
 $-k\theta$ is linear and therefore has no unique value on the circle. A well-defined vector field doesn't exist on the circle, so this problem should be visualized on the line.
@@ -178,4 +178,158 @@ A plot of $\gamma-\sin\theta-\kappa\theta$ with $\gamma=1$ and $\kappa=0.1$. See
 $\kappa=0.2$. As the value of $\kappa$ is increased, the number of fixed points (in this case) will decrease.
 
 From this example, it is possible to tell that these bifurcations are saddle-node bifurcations. Stable and unstable nodes appear in pairs before annihilating each other.
-# Question 3
+# Question 2 (Done)
+![[Pasted image 20261029184750.png]]
+
+---
+a.
+$$
+	\begin{align}
+	\frac{du}{d\theta} & =v \\
+	\frac{dv}{d\theta} & = \alpha-u+\varepsilon u^{2}
+	\end{align}
+$$
+---
+b.
+Trivially from the first equation:
+$$
+	v=0
+$$
+From the quadratic method:
+$$
+	\varepsilon u^{2}-u+\alpha=0 \implies u= \frac{1\pm \sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon}
+$$
+There are two points:
+$$
+	(u, v) = \left( \frac{1+\sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon}, 0 \right), \left( \frac{1-\sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon}, 0 \right)
+$$
+---
+c.
+Jacobian matrix:
+$$
+	\begin{bmatrix}
+	0 & 1 \\
+	2\varepsilon u-1 & 0
+	\end{bmatrix}
+$$
+Results in the linearized system,
+$$
+	\begin{bmatrix}
+	0 & 1 \\
+	\pm \sqrt{ 1-4\alpha\varepsilon } & 0
+	\end{bmatrix}
+$$
+In this case:
+$$
+	\left( \frac{1-\sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon}, 0 \right) \qquad \begin{bmatrix}
+	0 & 1 \\
+	-\sqrt{ 1-4\alpha\varepsilon } & 0
+	\end{bmatrix}
+$$
+The eigenvalues are:
+$$
+	\lambda = \pm i \sqrt[4]{ 1-4\alpha\varepsilon }
+$$
+Which are purely imaginary. So this is a centre.
+
+I intend to use the following energy functions based on $dv /d\theta$ to show this is a nonlinear centre:
+$$
+	E = \frac{1}{2} v^{2} + \int \alpha-u + \varepsilon u^{2} \, du = \frac{1}{2}v^{2} + \alpha u - \frac{u^{2}}{2} + \frac{\varepsilon u^{3}}{3}
+$$
+Which has the gradient:
+$$
+	\nabla E = \begin{bmatrix}
+	\alpha-u+\varepsilon u^{2} \\
+	v
+	\end{bmatrix}
+$$
+Which has already been shown to be $\vec{0}$ at the equilibrium points. The behaviour of the extrema at this point is determined by:
+$$
+	\begin{vmatrix}
+	E_{uu} & E_{uv} \\
+	E_{vu} & E_{vv}
+	\end{vmatrix} = \begin{vmatrix}
+	-1+2\varepsilon u & 0 \\
+	0 & 1
+	\end{vmatrix} = 2\varepsilon u-1
+$$
+At the equilibrium point:
+$$
+	2\varepsilon\left( \frac{1-\sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon} \right)-1 = -\sqrt{ 1-4\alpha\varepsilon } \approx -1<0
+$$
+Since $\varepsilon$ is small. I therefore conclude that this equilibrium corresponds with a local minimum, and so must be a nonlinear centre.
+
+---
+d.
+The equilibrium necessarily corresponds with a constant $u$, or a constant $r$. If the radius is constant such that $du /d\theta=0$, then this must be a circular orbit.
+# Question 4
+---
+a.
+Jacobian matrix:
+$$
+	\begin{bmatrix}
+	0 & 1 \\
+	-4 & 0
+	\end{bmatrix}
+$$
+Imaginary eigenvalues, this fixed point is a centre. It is not attracting, but it is Liapunov stable.
+
+For every $\varepsilon$, choose $\delta=\varepsilon /5$. Since this centre is an oval, the furthest some point within $\delta$ may travel is $4\delta=4\varepsilon /5<\varepsilon$. So nearby trajectories are close for all time.
+
+---
+b.
+$$
+	\begin{bmatrix}
+	0 & 2 \\
+	1 & 0
+	\end{bmatrix}
+$$
+Eigenvalues $\pm \sqrt{ 2 }$. One positive one negative, this is a saddle-point. Neither attracting or Liapunov stable.
+
+---
+c.
+![[Pasted image 20261029224938.png]]
+By observation, this is neither stable nor Liapunov stable.
+
+---
+d.
+![[Pasted image 20261029225023.png]]
+This vector field possess an infinite line of fixed point along the line $y=0$.
+
+It is not stable, because if you choose some fixed point $x^*$, and any arbitrary $\delta$, then you can pick some starting point $x_{0}$ that reaches another fixed point that isn't $x^*$.
+
+It is Liapunov stable. For every $\varepsilon$, choose $\delta=\varepsilon$. All points that begin within $\delta$ will approach the line $y=0$, staying within $\varepsilon$ forever.
+
+---
+e.
+$$
+	\begin{bmatrix}
+	-1 & 0 \\
+	0 & -5
+	\end{bmatrix}
+$$
+Purely negative eigenvalues. This fixed point is attracting. For all possible values in $\mathbb{R}^{2}$, they will eventually reach (0, 0).
+
+For the same reason, this point is also Liapunov stable. For all $\varepsilon$, choose $\delta=\varepsilon$. All points that start in $\delta=\varepsilon$ will approach the origin, before staying there for all time.
+
+This fixed point is therefore asymptotically stable.
+
+---
+f.
+$$
+	\begin{bmatrix}
+	1 & 0 \\
+	0 & 1
+	\end{bmatrix}
+$$
+Purely positive eigenvalues. This system is a repelling star. It is neither attracting nor Liapunov stable.
+
+---
+![[Pasted image 20261029225736.png]]
+
+In this system there are just two fixed points, $(r, \theta)=(0, 0)$ and $(1, 0)$. The first is unstable, and the second is semi-stable. Therefore, all points in $\mathbb{R}^{2}$ other than (0, 0) will eventually reach (1, 0). I conclude this is an attracting fixed point.
+
+However, for some $\varepsilon$ there will always exist a $\delta$ such that the trajectory will leave the region of $\varepsilon$. For example, if I choose $\varepsilon=1$, and pick the point $(1, \varphi)$ where $\varphi\to 0$ and $\varphi>0$, then the trajectory will loop all the way to $(1, \pi)$ before coming back to (1, 0). Since this point is infinitely close to (1, 0), there is no $\delta$ that will satisfy the definition for Liapunov stable. 
+
+This fixed point is therefore attracting, but not Liapunov stable.
+# Question 5
