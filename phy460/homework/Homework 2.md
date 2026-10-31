@@ -332,4 +332,232 @@ In this system there are just two fixed points, $(r, \theta)=(0, 0)$ and $(1, 0)
 However, for some $\varepsilon$ there will always exist a $\delta$ such that the trajectory will leave the region of $\varepsilon$. For example, if I choose $\varepsilon=1$, and pick the point $(1, \varphi)$ where $\varphi\to 0$ and $\varphi>0$, then the trajectory will loop all the way to $(1, \pi)$ before coming back to (1, 0). Since this point is infinitely close to (1, 0), there is no $\delta$ that will satisfy the definition for Liapunov stable. 
 
 This fixed point is therefore attracting, but not Liapunov stable.
-# Question 5
+# Question 5 (Done)
+![[Pasted image 20261030125530.png]]
+
+---
+a.
+$$
+	r(t) = c_{0}e^{ -t }
+$$
+At $t=0$ we have,
+$$
+	r_{0} = c_{0}e^{ 0 } = r_{0}=c_{0} \implies r(t) = r_{0}e^{ -t }
+$$
+Solve for $\theta$,
+$$
+	\dot{\theta} = \frac{1}{\ln r} = \frac{1}{\ln(r_{0}e^{ -t })} = \frac{1}{\ln r_{0} -t}
+$$
+Which has solution,
+$$
+	\theta(t) = c_{1}-\ln(\ln r_{0}-t)
+$$
+At $t=0$,
+$$
+	\theta_{0} = c_{1}-\ln(\ln r_{0}) \implies c_{1}=\theta_{0} + \ln \ln r_{0}
+$$
+Therefore,
+$$
+	r(t) = r_{0}e^{ -t } \qquad \theta(t) = \theta_{0} + \ln \ln r_{0} - \ln(\ln r_{0}-t)
+$$
+---
+b.
+As $t\to \infty$, $r(t)$ will decay exponentially to 0. That is,
+$$
+	\lim_{ t \to \infty } r_{0}e^{ -t } =0 \implies \lim_{ t \to \infty } r(t)=0
+$$
+Furthermore,
+$$
+	\lim_{ t \to \infty } \left[ \theta_{0} + \ln \ln r_{0} - \ln(\ln r_{0}-t) \right] = \lim_{ t \to \infty } (-\ln(-t)) = \lim_{ t \to \infty } \ln\left( -\frac{1}{t} \right)
+$$
+This is the same as the limit $\lim_{ x \to 0 }\ln x=-\infty$. I therefore conclude that:
+$$
+	\lim_{ t \to \infty } \lvert \theta(t) \rvert = \lim_{ t \to \infty } \left\lvert  \ln\left( -\frac{1}{t} \right)  \right\rvert \to \infty
+$$
+---
+c.
+Polar to Cartesian coordinates:
+$$
+	r=\sqrt{ x^{2}+y^{2} } \qquad \theta = \tan ^{-1}\left( \frac{y}{x} \right)
+$$
+$$
+	\dot{r} = \frac{x \dot{x} + y\dot{y}}{r} \qquad \dot{\theta} = \frac{x\dot{y} - y\dot{x}}{r^{2}}
+$$
+$$
+	\dot{r}=-r \qquad \dot{\theta} = \frac{1}{\ln r}
+$$
+First equation
+$$
+	\frac{x \dot{x} + y\dot{y}}{r} =-r \implies x \dot{x} + y\dot{y} =-r^{2} = x^{2}+y^{2}
+$$
+$$
+	x \dot{x} + y\dot{y} = x^{2}+y^{2}
+$$
+Second equation:
+$$
+	\frac{x\dot{y} - y\dot{x}}{r^{2}} = \frac{1}{\ln r} \implies x\dot{y} - y\dot{x} = \frac{x^{2}+y^{2}}{\ln \sqrt{ x^{2}+y^{2} }}
+$$
+$$
+	x\dot{y} - y\dot{x} = \frac{2(x^{2}+y^{2})}{\ln(x^{2}+y^{2})}
+$$
+This system of equations has the solution:
+$$
+	\dot{x} =-x-\frac{2y}{\ln(x^{2}+y^{2})} \qquad \dot{y}=-y+\frac{2x}{\ln(x^{2}+y^{2})}
+$$
+---
+d.
+Jacobian matrix:
+$$
+	\begin{bmatrix}
+	\frac{4xy}{(x^{2}+y^{2})\ln ^{2}(x^{2}+y^{2})}-1 & \frac{4y^{2}}{(x^{2}+y^{2})\ln ^{2}(x^{2}+y^{2})} - \frac{2}{\ln(x^{2}+y^{2})} \\
+	\frac{2}{\ln(x^{2}+y^{2})} - \frac{4x^{2}}{(x^{2}+y^{2})\ln ^{2}(x^{2}+y^{2})} & -\frac{4xy}{(x^{2}+y^{2})\ln ^{2}(x^{2}+y^{2})} -1
+	\end{bmatrix}
+$$
+Substitute in $x=0$ and $y=0$ to find the linearized system,
+$$
+	\begin{bmatrix}
+	\dot{x} \\
+	\dot{y}
+	\end{bmatrix} = \begin{bmatrix}
+	-1 & 0 \\
+	0 & -1
+	\end{bmatrix} \begin{bmatrix}
+	x \\
+	y
+	\end{bmatrix} \implies \begin{cases}
+	\dot{x}=-x \\
+	\dot{y}=-y
+	\end{cases}
+$$
+Which is a stable star, as needed.
+
+![[Pasted image 20261030163054.png]]
+
+Linearize this system,
+$$
+	\begin{bmatrix}
+	-3x^{2} & -1 \\
+	1 & 0
+	\end{bmatrix} \implies \begin{bmatrix}
+	0 & -1 \\
+	1 & 0
+	\end{bmatrix}
+$$
+Where I have substituted in $x=0$ and $y=0$. This has the purely imaginary eigenvalues $\pm i$. So the linear system predicts a centre.
+
+Convert to Polar coordinates,
+$$
+	r \dot{r} = x \dot{x} + y\dot{y} = x(-y-x^{3}) + y(x)=-x^{4} =-(r\cos\theta)^{4}
+$$
+$$
+	\dot{r} = -r^{3}\cos ^{4}\theta
+$$
+Now, note that $\cos ^{4}\theta$ is necessarily always positive because of the exponent. Furthermore, $r$ is also an always positive quantity. Therefore,
+$$
+	\dot{r}=-r^{3}\cos ^{4}\theta <0
+$$
+Everywhere excluding $r=0$. This implies that the fixed point at the origin must be attracting. So it is actually a stable spiral, as opposed to a centre.
+# Question 6 (Done)
+![[Pasted image 20261030173013.png]]
+
+---
+a.
+- $a$ is the birth rate of the rabbits.
+- $b$ is the rate at which the foxes hunt the rabbits.
+- $c$ is the death rate of the foxes.
+- $d$ is the birth rate of the foxes.
+
+The rabbits do not ever die from natural causes. They are exclusively hunted by the foxes. In the same vein, nothing is ever hunting the foxes. They all die from natural causes.
+
+The model assumes an infinite numbers of resources. Even if there are a huge number of rabbits and foxes, somehow, they are all fed.
+
+Rabbit and fox mating could be seasonal.
+
+---
+b.
+We have,
+$$
+	\frac{dR}{dt} = aR-bRF \qquad \frac{dF}{dt} = -cF + dRF
+$$
+Define the new variables:
+$$
+	F=\frac{a}{b}y \qquad R=\frac{c}{d} x \qquad \tau=at \qquad \mu=\frac{c}{a}
+$$
+The first equation becomes:
+$$
+	\begin{align}
+	\frac{dR}{dt} & = aR-bRF \\
+	 & = aR\left( 1-\frac{b}{a}F \right) \\
+	 \frac{c}{d} \frac{dx}{dt} & = \frac{ac}{d} x(1-y) \\
+	 \frac{1}{a} \frac{dx}{dt} & = x(1-y) \\
+	 x' & = x(1-y)
+	\end{align}
+$$
+Where $x'$ is $dx /d\tau$. Now, the second equation:
+$$
+	\begin{align}
+	\frac{dF}{dt} & = -cF + dRF \\
+	 & = cF\left( \frac{d}{c}R-1 \right) \\
+	\frac{a}{b} \frac{dy}{dt} & = \frac{ca}{b}y(x-1) \\
+	y' & = \frac{c}{a}y(x-1) \\
+	 & = \mu y(x-1)
+	\end{align}
+$$
+Where, similarly, $y'=dy /d\tau$. The above yields the system of equations:
+$$
+	x'=x(1-y) \qquad y'=\mu y(x-1)
+$$
+---
+c.
+Add both equations together,
+$$
+	x'+y' = x(1-y) + \mu y(x-1)
+$$
+To find a conserved quantity, this must be zero.
+$$
+	x(1-y) + \mu y(x-1) =0 \implies \frac{1-y}{y} + \mu \frac{x-1}{x} =0
+$$
+Re-arrange, and integrate both sides,
+$$
+	\frac{1-y}{y} = \mu \frac{1-x}{x} \implies \int \frac{1-y}{y} \, dy = \mu \int \frac{1-x}{x} \, dx
+$$
+Evaluate the integrals:
+$$
+	\ln \lvert y \rvert -y + c_{0} = \mu \left[ \ln \lvert x \rvert -x + c_{1} \right]
+$$
+Consolidate the integration constant,
+$$
+	\ln \lvert y \rvert -y= \mu(\ln \lvert x \rvert -x) + c
+$$
+Which introduces the conserved quantity:
+$$
+	\mu(x-\ln \lvert x \rvert ) + \ln \lvert y \rvert -y=c
+$$
+---
+d.
+Set both equations to zero to find the fixed points:
+$$
+	x'=x(1-y) =0 \implies x=0, y=1 \qquad y'=\mu y(x-1)=0 \implies x=1, y=0
+$$
+I conclude that the fixed points are located at $(x, y)=(0, 0)$ and (1, 1). The linearized system is:
+$$
+	\begin{bmatrix}
+	1-y & -x \\
+	\mu y & \mu(x-1)
+	\end{bmatrix}
+$$
+Which at the fixed points become:
+$$
+	A=\begin{bmatrix}
+	1 & 0 \\
+	0 & -\mu
+	\end{bmatrix}_{(0, 0)} \qquad B=\begin{bmatrix}
+	0 & -1 \\
+	\mu & 0
+	\end{bmatrix}_{(1, 1)}
+$$
+$A$ has purely real eigenvalues, one positive and one negative. $B$ has purely imaginary eigenvalues. So the fixed point at (0, 0) is a saddle, and the fixed point at (1, 1) is a centre.
+
+Notably, the eigenvectors of $A$ are (1, 0) and (0, 1). Therefore, in the first quadrant (with physically plausible conditions) all initial conditions will fall cycles governed by the centre at (1, 1). Only if the initial conditions lie on the $x$ and $y$ axis will there be no cycle.
+
+These two conditions correspond with the case where there are no foxes or there are no rabbits. In the first, the rabbits multiply endlessly, in the second, all the foxes starve.
