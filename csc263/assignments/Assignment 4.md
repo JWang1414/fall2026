@@ -9,3 +9,20 @@ $$
 $$
 ---
 b.
+Definition of the expectation value:
+$$
+	E(X) = \sum xP(X=x)
+$$
+Where $X$ denotes an event, and $x$ is some outcome.
+
+(I drew a table of all the possibilities, since $m$ is small.)
+
+The total number of possibilities is $m^{2}=16$. Define $P(l=n)$ as the probability $P$ that the length $l$ is $n$ elements long. There are three possibilities with the following probabilities:
+$$
+	P(l=3) = \frac{7}{16} \qquad P(l=4) = \frac{5}{16} \qquad P(l=9) = \frac{4}{16}
+$$
+According to the definition of the expectation value, the expected length of the chain is:
+$$
+	E(l) = 3\left( \frac{7}{16} \right) + 4\left( \frac{5}{16} \right) + 9\left( \frac{4}{16} \right) = \frac{77}{16} = 4.8125
+$$
+# Question 2
