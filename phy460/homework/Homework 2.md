@@ -177,7 +177,7 @@ A plot of $\gamma-\sin\theta-\kappa\theta$ with $\gamma=1$ and $\kappa=0.1$. See
 ![[Pasted image 20261028212355.png]]
 $\kappa=0.2$. As the value of $\kappa$ is increased, the number of fixed points (in this case) will decrease.
 
-From this example, it is possible to tell that these bifurcations are saddle-node bifurcations. Stable and unstable nodes appear in pairs before annihilating each other.
+From these two examples, it is possible to tell that these bifurcations are saddle-node bifurcations. Stable and unstable nodes appear in pairs before annihilating each other.
 # Question 2 (Done)
 ![[Pasted image 20261029184750.png]]
 
@@ -205,46 +205,38 @@ $$
 $$
 ---
 c.
-Jacobian matrix:
+Compute the Jacobian matrix, and therefore the linearized system:
 $$
 	\begin{bmatrix}
 	0 & 1 \\
 	2\varepsilon u-1 & 0
-	\end{bmatrix}
-$$
-Results in the linearized system,
-$$
+	\end{bmatrix} \implies 
 	\begin{bmatrix}
 	0 & 1 \\
 	\pm \sqrt{ 1-4\alpha\varepsilon } & 0
 	\end{bmatrix}
 $$
-In this case:
+The equilibria with the centre is:
 $$
 	\left( \frac{1-\sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon}, 0 \right) \qquad \begin{bmatrix}
 	0 & 1 \\
 	-\sqrt{ 1-4\alpha\varepsilon } & 0
 	\end{bmatrix}
 $$
-The eigenvalues are:
+Which has the eigenvalues:
 $$
 	\lambda = \pm i \sqrt[4]{ 1-4\alpha\varepsilon }
 $$
-Which are purely imaginary. So this is a centre.
-
-I intend to use the following energy functions based on $dv /d\theta$ to show this is a nonlinear centre:
+I intend to use the following energy function based on $dv /d\theta$ to show this is a nonlinear centre:
 $$
 	E = \frac{1}{2} v^{2} + \int \alpha-u + \varepsilon u^{2} \, du = \frac{1}{2}v^{2} + \alpha u - \frac{u^{2}}{2} + \frac{\varepsilon u^{3}}{3}
 $$
-Which has the gradient:
+The gradient and Jacobian are:
 $$
 	\nabla E = \begin{bmatrix}
 	\alpha-u+\varepsilon u^{2} \\
 	v
-	\end{bmatrix}
-$$
-Which has already been shown to be $\vec{0}$ at the equilibrium points. The behaviour of the extrema at this point is determined by:
-$$
+	\end{bmatrix} \implies 
 	\begin{vmatrix}
 	E_{uu} & E_{uv} \\
 	E_{vu} & E_{vv}
@@ -253,11 +245,11 @@ $$
 	0 & 1
 	\end{vmatrix} = 2\varepsilon u-1
 $$
-At the equilibrium point:
+Note that $\nabla E$ is known to be $\vec{0}$ at the equilibrium points. From the Jacobian, we can see that this extrema corresponds with a local minima:
 $$
-	2\varepsilon\left( \frac{1-\sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon} \right)-1 = -\sqrt{ 1-4\alpha\varepsilon } \approx -1<0
+	2\varepsilon u-1 = 2\varepsilon\left( \frac{1-\sqrt{ 1-4\alpha\varepsilon }}{2\varepsilon} \right)-1 = -\sqrt{ 1-4\alpha\varepsilon } \approx -1<0
 $$
-Since $\varepsilon$ is small. I therefore conclude that this equilibrium corresponds with a local minimum, and so must be a nonlinear centre.
+Since $\varepsilon$ is small. I therefore conclude that this equilibrium must be a nonlinear centre.
 
 ---
 d.
@@ -265,7 +257,7 @@ The equilibrium necessarily corresponds with a constant $u$, or a constant $r$. 
 # Question 4
 ---
 a.
-Jacobian matrix:
+Linearized system:
 $$
 	\begin{bmatrix}
 	0 & 1 \\
@@ -278,6 +270,7 @@ For every $\varepsilon$, choose $\delta=\varepsilon /5$. Since this centre is an
 
 ---
 b.
+
 $$
 	\begin{bmatrix}
 	0 & 2 \\
@@ -337,6 +330,7 @@ This fixed point is therefore attracting, but not Liapunov stable.
 
 ---
 a.
+$r(t)$ is trivially:
 $$
 	r(t) = c_{0}e^{ -t }
 $$
@@ -378,35 +372,28 @@ $$
 c.
 Polar to Cartesian coordinates:
 $$
-	r=\sqrt{ x^{2}+y^{2} } \qquad \theta = \tan ^{-1}\left( \frac{y}{x} \right)
-$$
-$$
 	\dot{r} = \frac{x \dot{x} + y\dot{y}}{r} \qquad \dot{\theta} = \frac{x\dot{y} - y\dot{x}}{r^{2}}
 $$
-$$
-	\dot{r}=-r \qquad \dot{\theta} = \frac{1}{\ln r}
-$$
-First equation
+$r(t)$ becomes:
 $$
 	\frac{x \dot{x} + y\dot{y}}{r} =-r \implies x \dot{x} + y\dot{y} =-r^{2} = x^{2}+y^{2}
 $$
-$$
-	x \dot{x} + y\dot{y} = x^{2}+y^{2}
-$$
-Second equation:
+$\theta(t)$ becomes:
 $$
 	\frac{x\dot{y} - y\dot{x}}{r^{2}} = \frac{1}{\ln r} \implies x\dot{y} - y\dot{x} = \frac{x^{2}+y^{2}}{\ln \sqrt{ x^{2}+y^{2} }}
 $$
+Yielding the system of equations:
 $$
+	x \dot{x} + y\dot{y} = x^{2}+y^{2} \qquad
 	x\dot{y} - y\dot{x} = \frac{2(x^{2}+y^{2})}{\ln(x^{2}+y^{2})}
 $$
-This system of equations has the solution:
+Which has the solution
 $$
 	\dot{x} =-x-\frac{2y}{\ln(x^{2}+y^{2})} \qquad \dot{y}=-y+\frac{2x}{\ln(x^{2}+y^{2})}
 $$
 ---
 d.
-Jacobian matrix:
+The linearized version of the new system of equations is:
 $$
 	\begin{bmatrix}
 	\frac{4xy}{(x^{2}+y^{2})\ln ^{2}(x^{2}+y^{2})}-1 & \frac{4y^{2}}{(x^{2}+y^{2})\ln ^{2}(x^{2}+y^{2})} - \frac{2}{\ln(x^{2}+y^{2})} \\
