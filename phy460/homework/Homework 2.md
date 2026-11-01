@@ -1,143 +1,3 @@
-# Question 1 (Not done)
----
-1.
-Determine the value of $A^{n}$:
-$$
-	A^{n} = \begin{bmatrix}
-	\lambda ^{n} & cn\lambda ^{n-1} \\
-	0 & \lambda ^{n}
-	\end{bmatrix}
-$$
-$e^{ At }$ is therefore:
-$$
-	e^{ At } = \sum_{n=0}^{\infty} \frac{t^{n}}{n!} \begin{bmatrix}
-	\lambda ^{n} & cn\lambda ^{n-1} \\
-	0 & \lambda ^{n}
-	\end{bmatrix} = \begin{bmatrix}
-	C & D \\
-	E & G
-	\end{bmatrix}
-$$
-Trivially, $E=0$. Additionally,
-$$
-	C=G= \sum_{n=0}^{\infty} \frac{t^{n}\lambda ^{n}}{n!} = e^{ \lambda t }
-$$
-Now solve for $D$,
-$$
-	D = \sum_{n=0}^{\infty} \frac{t^{n}(cn\lambda ^{n-1})}{n!} = \sum_{n=0}^{\infty} c \frac{t^{n}\lambda ^{n-1}}{(n-1)!} = ct \sum_{n=0}^{\infty} \frac{t^{n-1}\lambda ^{n-1}}{(n-1)!} = ct e^{ \lambda t }
-$$
-Therefore I conclude that,
-$$
-	e^{ At } = e^{ \lambda t } \begin{bmatrix}
-	1 & ct \\
-	0 & 1
-	\end{bmatrix}
-$$
-Verify,
-$$
-	\frac{d}{dt} e^{ At } = \frac{d}{dt} \begin{bmatrix}
-	e^{ \lambda t } & cte^{ \lambda t } \\
-	0 & e^{ \lambda t }
-	\end{bmatrix} = \begin{bmatrix}
-	\lambda e^{ \lambda t } & c e^{ \lambda t }(\lambda t+1) \\
-	0 & \lambda e^{ \lambda t }
-	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
-	\lambda & c(\lambda t+1) \\
-	0 & \lambda
-	\end{bmatrix}
-$$
-$$
-	Ae^{ At } = \begin{bmatrix}
-	\lambda & c \\
-	0 & \lambda
-	\end{bmatrix} \begin{bmatrix}
-	e^{ \lambda t } & ct e^{ \lambda t } \\
-	0 & e^{ \lambda t }
-	\end{bmatrix} = \begin{bmatrix}
-	\lambda e^{ \lambda t } & c e^{ \lambda t } + c\lambda t e^{ \lambda t } \\
-	0 & \lambda e^{ \lambda t }
-	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
-	\lambda & c(\lambda t+1) \\
-	0 & \lambda
-	\end{bmatrix}
-$$
-So $\frac{d}{dt}e^{ At }=Ae^{ At }$ as needed.
-
----
-2.
-$$
-	\begin{bmatrix}
-	x(t) \\
-	y(t)
-	\end{bmatrix} = e^{ At } \begin{bmatrix}
-	x_{0} \\
-	y_{0}
-	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
-	1 & ct \\
-	0 & 1
-	\end{bmatrix} \begin{bmatrix}
-	x_{0} \\
-	y_{0}
-	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
-	x_{0}+cy_{0}t \\
-	y_{0}
-	\end{bmatrix}
-$$
-- For $\lambda=2$ and $c=3$, it is originally a repelling star. But as $t\to \infty$ it appears to reduce to an unstable degenerate node
-- For $\lambda=2$ and $c=-3$, the case is the same as above. But the direction has swapped
-- For $\lambda=-2$ and $c=2$, the behaviour is the same, but the strength of the vector field decays quickly as we move away from $(x, y)=(0, 0)$
----
-3.
-This is a degenerate node with just one eigenvalue $\lambda$ and eigenvector $[1, 0]$. By observation, the index of the vector field should be 1.
-
----
-4.
-$$
-	I_{C} = \frac{1}{2\pi} \oint_{C} \frac{f \, dg - g \, df}{f^{2}+g^{2}}
-$$
-Where $\dot{x}=f(x, y)$ and $\dot{y}=g(x, y)$ along some curve $C$
-- Continue this question later
-
----
-5.
-A degenerate node forms at (0, 0) because $A$ has just a single eigenvalue $\lambda$. 
-
-Linear form:
-$$
-	\begin{align}
-	\dot{x} & = \lambda x+cy \\
-	\dot{y} & = \lambda y
-	\end{align}
-$$
-One example of a non-linear modification might be:
-$$
-	\begin{align}
-	\dot{x} & = \lambda x+cy \\
-	\dot{y} & = \lambda y + y^{3}
-	\end{align}
-$$
-Which would have the linearized system:
-$$
-	\begin{bmatrix}
-	\lambda & c \\
-	0 & \lambda+3y^{2}
-	\end{bmatrix} \implies \begin{bmatrix}
-	\lambda & c \\
-	0 & \lambda
-	\end{bmatrix}
-$$
-Dropping the quadratic terms to maintain a linear system. Note that, on the contrary, the actual system,
-$$
-	\begin{bmatrix}
-	\lambda & c \\
-	0 & \lambda+y^{2}
-	\end{bmatrix} \begin{bmatrix}
-	x \\
-	y
-	\end{bmatrix}
-$$
-Has two eigenvalues $\lambda$ and $\lambda+y^{2}$, with two different eigenvectors.
-- I have no idea if this is right. I feel like it's wrong
 # Question 3 (Done)
 ![[Pasted image 20261028205045.png]]
 a.
@@ -418,6 +278,8 @@ $$
 $$
 Which is a stable star, as needed.
 
+---
+
 ![[Pasted image 20261030163054.png]]
 
 Linearize this system,
@@ -548,3 +410,189 @@ $A$ has purely real eigenvalues, one positive and one negative. $B$ has purely i
 Notably, the eigenvectors of $A$ are (1, 0) and (0, 1). Therefore, in the first quadrant (with physically plausible conditions) all initial conditions will fall cycles governed by the centre at (1, 1). Only if the initial conditions lie on the $x$ and $y$ axis will there be no cycle.
 
 These two conditions correspond with the case where there are no foxes or there are no rabbits. In the first, the rabbits multiply endlessly, in the second, all the foxes starve.
+# Question 1 (Not done)
+---
+1.
+Determine the value of $A^{n}$:
+$$
+	A^{n} = \begin{bmatrix}
+	\lambda & c \\
+	0 & \lambda
+	\end{bmatrix}^{n} = \begin{bmatrix}
+	\lambda ^{n} & cn\lambda ^{n-1} \\
+	0 & \lambda ^{n}
+	\end{bmatrix}
+$$
+$e^{ At }$ is therefore:
+$$
+	e^{ At } = \sum_{n=0}^{\infty} \frac{t^{n}}{n!} \begin{bmatrix}
+	\lambda ^{n} & cn\lambda ^{n-1} \\
+	0 & \lambda ^{n}
+	\end{bmatrix} = \begin{bmatrix}
+	C & D \\
+	E & G
+	\end{bmatrix}
+$$
+Trivially, $E=0$.
+$$
+	C=G= \sum_{n=0}^{\infty} \frac{t^{n}\lambda ^{n}}{n!} = e^{ \lambda t }
+$$
+$$
+	D = \sum_{n=0}^{\infty} \frac{t^{n}(cn\lambda ^{n-1})}{n!} = \sum_{n=0}^{\infty} c \frac{t^{n}\lambda ^{n-1}}{(n-1)!} = ct \sum_{n=0}^{\infty} \frac{t^{n-1}\lambda ^{n-1}}{(n-1)!} = ct e^{ \lambda t }
+$$
+Therefore I conclude that,
+$$
+	e^{ At } = e^{ \lambda t } \begin{bmatrix}
+	1 & ct \\
+	0 & 1
+	\end{bmatrix}
+$$
+Verify,
+$$
+	\frac{d}{dt} e^{ At } = \frac{d}{dt} \begin{bmatrix}
+	e^{ \lambda t } & cte^{ \lambda t } \\
+	0 & e^{ \lambda t }
+	\end{bmatrix} = \begin{bmatrix}
+	\lambda e^{ \lambda t } & c e^{ \lambda t }(\lambda t+1) \\
+	0 & \lambda e^{ \lambda t }
+	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
+	\lambda & c(\lambda t+1) \\
+	0 & \lambda
+	\end{bmatrix}
+$$
+$$
+	Ae^{ At } = \begin{bmatrix}
+	\lambda & c \\
+	0 & \lambda
+	\end{bmatrix} \begin{bmatrix}
+	e^{ \lambda t } & ct e^{ \lambda t } \\
+	0 & e^{ \lambda t }
+	\end{bmatrix} = \begin{bmatrix}
+	\lambda e^{ \lambda t } & c e^{ \lambda t } + c\lambda t e^{ \lambda t } \\
+	0 & \lambda e^{ \lambda t }
+	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
+	\lambda & c(\lambda t+1) \\
+	0 & \lambda
+	\end{bmatrix}
+$$
+So $\frac{d}{dt}e^{ At }=Ae^{ At }$ as needed.
+
+---
+2.
+$$
+	\begin{bmatrix}
+	x(t) \\
+	y(t)
+	\end{bmatrix} = e^{ At } \begin{bmatrix}
+	x_{0} \\
+	y_{0}
+	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
+	1 & ct \\
+	0 & 1
+	\end{bmatrix} \begin{bmatrix}
+	x_{0} \\
+	y_{0}
+	\end{bmatrix} = e^{ \lambda t } \begin{bmatrix}
+	x_{0}+cy_{0}t \\
+	y_{0}
+	\end{bmatrix}
+$$
+In the case when $\lambda=2$ and $c=3$, this is a repelling degenerate node with an unstable fixed point at (0, 0). Flows approach $(x, y)\to(\infty, \infty)$ or $(-\infty, -\infty)$.
+
+![[Pasted image 20261101164134.png]]
+
+When $\lambda=2$ and $c=-3$, this is still a repelling degenerate node, with an unstable fixed point at the origin. Flows tend towards $(\infty, -\infty)$ or $(-\infty, \infty)$.
+
+![[Pasted image 20261101164203.png]]
+
+When $\lambda=-2$ and $c=2$, the origin becomes an attracting degenerate node. So there is a stable fixed point at (0, 0). Flows now all approach (0, 0) as opposed to diverging to infinity.
+
+![[Pasted image 20261101164239.png]]
+
+---
+3.
+This is a degenerate node with just one eigenvalue $\lambda$ and eigenvector $[1, 0]$. By observation, the index of the vector field should be 1.
+
+---
+4.
+I will use the following equation to compute the index:
+$$
+	I_{C} = \frac{1}{2\pi} \oint_{C} \frac{f \, dg - g \, df}{f^{2}+g^{2}}
+$$
+Where $\dot{x}=f(x, y)$ and $\dot{y}=g(x, y)$, and the integral is done along some closed curve $C$. In this system:
+$$
+	\dot{x}=f = \lambda x+cy \qquad \dot{y}=g=\lambda y
+$$
+$$
+	df=\lambda \, dx + c \, dy \qquad dg=\lambda \, dy
+$$
+Integral:
+$$
+	\oint_{C} \frac{(\lambda x+cy)(\lambda \, dy) - (\lambda y)(\lambda \, dx + c \, dy)}{(\lambda x+cy)^{2}+(\lambda y)^{2}}
+$$
+$$
+	\oint_{C} \frac{\lambda^{2}x \, dy - \lambda^{2}y \, dx}{(\lambda x+cy)^{2}+(\lambda y)^{2}} = \lambda^{2} \oint_{C} \frac{x \, dy - y \, dx}{(\lambda x+cy)^{2}+(\lambda y)^{2}}
+$$
+Compute this integral with a square centred at the origin. Side lengths 2. Lines $x=1, -1$ and $y=1, -1$
+
+![[Pasted image 20261101134150.png]]
+A diagram of the contour $C$ that I am choosing to compute the integral over.
+
+Starting with the green line: $x=1$, $y=-1\to 1$
+$$
+	\lambda^{2} \int_{-1}^{1} \frac{dy}{(\lambda+cy)^{2}+(\lambda y)^{2}} = \arctan\left( \frac{\lambda^{2}+c\lambda + c^{2}}{\lambda^{2}} \right) + \arctan\left( \frac{\lambda^{2}-c\lambda + c^{2}}{\lambda^{2}} \right)
+$$
+Red line: $y=1$, $x=1\to -1$
+$$
+	\lambda^{2} \int_{-1}^{1} \frac{dx}{(\lambda x+c)^{2}+\lambda^{2}} = \arctan\left( \frac{\lambda+c}{\lambda} \right) +\arctan\left( \frac{\lambda-c}{\lambda} \right)
+$$
+Purple line: $x=-1$, $y=1\to -1$
+$$
+	\lambda^{2} \int_{-1}^{1} \frac{dy}{(-\lambda+cy)^{2}+(\lambda y)^{2}} = \arctan\left( \frac{\lambda^{2}+c\lambda+c^{2}}{\lambda^{2}} \right) + \arctan\left( \frac{\lambda^{2}-c\lambda+c^{2}}{\lambda^{2}} \right)
+$$
+Blue line: $y=-1$, $x=-1\to 1$
+$$
+	\lambda^{2} \int_{-1}^{1} \frac{dx}{(\lambda x-c)^{2}+(-\lambda)^{2}} = \arctan\left( \frac{\lambda+c}{\lambda} \right) + \arctan\left( \frac{\lambda-c}{\lambda} \right)
+$$
+Add all of this together to find:
+$$
+	2 \left[ \arctan\left( \frac{\lambda^{2}+c\lambda+c^{2}}{\lambda^{2}} \right) + \arctan\left( \frac{\lambda^{2}-c\lambda+c^{2}}{\lambda^{2}} \right) + \arctan\left( \frac{\lambda+c}{\lambda} \right) + \arctan\left( \frac{\lambda-c}{\lambda} \right) \right]
+$$
+The index of this system is therefore:
+$$
+	\begin{align}
+		I_{C} & = \frac{1}{2\pi} \oint_{C} \frac{f \, dg - g \, df}{f^{2}+g^{2}} \\
+		 & = \frac{1}{\pi}\left[ \arctan\left( \frac{\lambda^{2}+c\lambda+c^{2}}{\lambda^{2}} \right) + \arctan\left( \frac{\lambda^{2}-c\lambda+c^{2}}{\lambda^{2}} \right) + \arctan\left( \frac{\lambda+c}{\lambda} \right) + \arctan\left( \frac{\lambda-c}{\lambda} \right) \right]
+	\end{align}
+$$
+
+Using $\lambda=2$ and $c=3$,
+$$
+	\frac{1}{\pi}\left[ \arctan\left( \frac{19}{4} \right) + \arctan\left( \frac{7}{4} \right) + \arctan\left( \frac{5}{2} \right) + \arctan\left( -\frac{1}{2} \right) \right] = 1
+$$
+In the other two cases:
+$$
+	\begin{align}
+	\lambda=2, c=-3 & \implies I_{C}=1 \\
+	\lambda=-2, c=2 & \implies I_{C}=1
+	\end{align}
+$$
+Confirming the index is 1, and topologically invariant for different values of $\lambda$ and $c$.
+
+---
+5.
+A degenerate node forms at (0, 0) because $A$ has just a single eigenvalue $\lambda$. A non-linearity might introduce another eigenvalue.
+
+Since this fixed point may be attracting or repelling based on the values of $\lambda$ and $c$, it might become an attracting/stable fixed point, or repelling/unstable fixed point. It cannot become a saddle point, because saddles have an index of -1, not 1.
+
+To adjust the behaviour of this fixed point from a degenerate node to something else, the linearization must introduce another eigenvalue. For example:
+$$
+	\begin{bmatrix}
+	\lambda & c \\
+	0 & \lambda
+	\end{bmatrix} \to \begin{bmatrix}
+	\lambda & c \\
+	0 & \lambda+c
+	\end{bmatrix}
+$$
+This system has two unique eigenvalues $\lambda$ and $\lambda+c$, with two associated unique eigenvectors. It could also be stable or unstable depending on the values of $\lambda$ and $c$.
