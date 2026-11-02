@@ -26,3 +26,47 @@ $$
 	E(l) = 3\left( \frac{7}{16} \right) + 4\left( \frac{5}{16} \right) + 9\left( \frac{4}{16} \right) = \frac{77}{16} = 4.8125
 $$
 # Question 2
+---
+a.
+There are $k$ copies of $x$ in $A[1\dots n]$. $n$ is the size of $A$. Since the index $i$ is chosen uniformly at random, the chance of finding $x$ in one try will be $k /n$.
+
+---
+b.
+To compute the probability of returning True, I will instead compute the probability it will return False. At every iteration, the chance that $A[i]$ is not $x$ is $(n-k) /n$. This algorithm will loop $r$ times. If $i$ is always chosen uniformly with replacement, and each loop is independent from each other, than the chance that this algorithm returns False after $r$ iterations is:
+$$
+	\left( \frac{n-k}{n} \right)^{r}
+$$
+The probability that it will return True is therefore:
+$$
+	1-\left( \frac{n-k}{n} \right)^{r}
+$$
+---
+c.
+The chance that the algorithm returns True after exactly $r$ iterations is:
+$$
+	\left( \frac{n-k}{n} \right)^{r-1}\left( \frac{k}{n} \right)
+$$
+The expected number of loop iterations is:
+$$
+	E(R) = \sum rP(R=r) = \sum_{r=1}^{\infty} r \left( \frac{n-k}{n} \right)^{r-1}\left( \frac{k}{n} \right)
+$$
+Define the new variable $a=r-1\implies r=a+1$ to shift the indices,
+$$
+	= \frac{k}{n} \sum_{a=0}^{\infty} (a+1) \left( \frac{n-k}{n} \right)^{a} \propto 
+	\sum_{a=0}^{\infty} a\left( \frac{n-k}{n} \right)^{a} + \sum_{a=0}^{\infty} \left( \frac{n-k}{n} \right)^{a}
+$$
+Apply the following series identities (the first is just the geometric series):
+$$
+	\sum_{k=0}^{\infty} x^{k} = \frac{1}{1-x} \qquad \sum_{k=0}^{\infty} kx^{k} = \frac{x}{(x-1)^{2}}
+$$
+Then,
+$$
+	\sum_{a=0}^{\infty} a\left( \frac{n-k}{n} \right)^{a} + \sum_{a=0}^{\infty} \left( \frac{n-k}{n} \right)^{a} = \frac{n(n-k)}{k^{2}} + \frac{n}{k}
+$$
+So the expected number of loops is:
+$$
+	\frac{k}{n} \left( \frac{n(n-k)}{k^{2}} + \frac{n}{k} \right) = \frac{n}{k}
+$$
+# Question 3
+---
+a.
