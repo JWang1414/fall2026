@@ -70,3 +70,68 @@ $$
 # Question 3
 ---
 a.
+My solution will use the forest structure, with the weighted union heuristic, and path compression.
+
+Begin by defining $n$ distinct sets $x_{1}, x_{2}, \dots, x_{n}$, where each value $x_{i}$ is a pointer to the $i$th element in the array $A$ of size $n$. Create the new empty list $Q$ of (currently) 0 constraints. Then, loop through the list $L$ of $m<n$ constraints.
+1. Upon encountering an equality constraint, merge the two sets containing $x_{i}$ and $x_{j}$. That is, Union($x_{i}, x_{j}$).
+2. Upon encountering an inequality constraint, append it to $Q$.
+
+When all the constraints of $L$ have been seen, begin looping through $Q$, which will contain exclusively inequality constraints. For each inequality constraint, check if $x_{i}$ and $x_{j}$ are in the same set. If so, then return nil, because $L$ is not satisfiable. That is, if $\text{Find}(x_{i})=\text{Find}(x_{j})$, then return nil. Otherwise output the array $A[1\dots n]$.
+
+To make $A$, the values in each set should be set to the same value. If we for example have the sets $\{ 1, 2 \}, \{ 3, 4 \}, \{ 5 \}$. Then we would expect to have $x_{1}=x_{2}=1$, $x_{3}=x_{4}=2$, and $x_{5}=3$.
+
+$A$ can be constructed with a direct access array of size $n$.
+1. Run Find($x_{1}$) to determine the head/representative of this tree $h$
+2. Recursively search through all the children of $h$, setting each associated value in $A$ to 1
+3. After going through every value in this tree, repeat these steps for the next vacant spot in $A$. This time, setting the associated values to 2, and so on.
+---
+b.
+isSatisfiable(n, L)
+```
+A = direct access array of size n. All values initially 0.
+S = Set containing disjoint sets {x_i} from 1 to n
+
+# Organize the list of constraints
+Q = []
+for constraint in L:
+	if equality constraint x_i = x_j:
+		Union(x_i, x_j)
+	else:
+		Q.append(constraint)
+
+# Check if the constraints are valid
+for constraint in Q:
+	if Find(x_i) = Find(x_j):
+		return nil
+
+# Construct A
+k = 1
+for i = 1 to n:
+	if A[i] == 0:
+		root = Find(S[i])
+		fillTree(root, k)
+		k += 1
+
+return A
+```
+
+fillTree(node, k)
+```
+node.value = k
+for child in node.children:
+	fillTree(child)
+```
+---
+c.
+Assuming all variables can be declared in $O(1)$ time, there are three main segments of my algorithm: building a queue for the constraints, checking if the constraints are valid, and constructing $A$.
+
+To build a queue for the constraints, all elements of $L$ are looped over. For each of the $m$ elements, two sets $x_{i}$ and $x_{j}$ are Union'd, or a constraint is added to the queue $Q$. Both operations take constant time. It therefore takes $O(m)$ time to build a queue for the constraints.
+
+To check if the constraints are valid, all elements of $Q$ are looped over. The maximum length of $Q$ is $m$. For each element in $Q$, there are two Finds. According to the theorem from lecture 12, with WU and PC, executing a sequence of $n-1$ Unions and $m\geq n$ Finds will take $O(m\log^*n)$ time. In this loop, there are 0 Unions, but $2m$ Finds. The runtime of this segment is therefore $O(2m\log^*n)$ or $O(m\log^*n)$.
+
+To construct $A$, all values in $A$ must be traveled to. $A$ is an array of size $n$, and so this sub-algorithm will take $O(n)$ time.
+
+The total runtime is therefore:
+$$
+	O(m) + O(m\log^*n) + O(n) \implies O(m\log^*n)
+$$
