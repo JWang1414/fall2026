@@ -4,7 +4,8 @@
   "textFontFamily": "FiraCode Nerd Font,Liberation Mono",
   "cssTheme": "",
   "enabledCssSnippets": [
-    "overrides"
+    "overrides",
+    "no_animation"
   ],
   "baseFontSize": 15,
   "accentColor": "",
