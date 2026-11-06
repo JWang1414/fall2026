@@ -33,3 +33,29 @@ A graph search is done by starting at some node and following its edges to find 
 
 There are two basic graph searches. *Breadth first search* (BFS), and *depth first search* (DFS).
 # Breadth First Search
+Done by starting at some node $s$
+1. Explore $s$ by following all the edges from $s$
+2. Explore discovered nodes in order of discovery. That is, first discovered, for explored
+This can be implemented with a FIFO queue, where new nodes are added in, and the nodes to be explored are removed.
+## BFS Maintained Information
+There are three colours for nodes in BFS, white, grey, and black.
+- White: undiscovered
+- Grey: discovered, but not explored
+- Black: discovered and explored
+
+$p[v]=u$ indicates that $v$ was discovered while exploring $u$. That is, $u$ discovered $v$.
+
+$d[v]$ is the length of the discovery path from $s$, the starting node.
+
+![[Pasted image 20261104143354.png]]
+The high level pseudo-code for how we expect BFS to behave.
+
+- There is an example of a BFS in the slides. I will not copy them down here
+
+The worst-case time complexity of BFS is $O(\lvert V \rvert+\lvert E \rvert)$.
+
+Say we execute BFS($s$) on some graph $G$. Then, for every node $v$ we get the discovery path $d[v]$. Call the length of the shortest path from $s$ to $v$ $\delta(s, v)$
+
+Theorem:
+> After BFS($s$), for every $v\in V$: $d[v]=\delta(s, v)$. That is, the discovery path to $v$ is the shortest path to $v$.
+
