@@ -179,3 +179,23 @@ $$
 	\end{bmatrix}^{2} \approx 93.379
 $$
 Adjusting for units, this is $m^{2}=0.0933$, which is not even close to the invariant mass of $K^0$, 0.248. In fact, this is not even close to anything that is listed on the (provided) table of particles.
+
+Took some more measurements. Repeating these calculation with my new numbers:
+$$
+	\sqrt{ p^{2}_{+}+m^{2}_{+} }+\sqrt{ p^{2}_{-}+m^{2}_{-} } \approx 714.3
+$$
+$$
+	\sqrt{ p^{2}_{K}+m^{2}_{K} } \approx 817.8
+$$
+The accuracy of my numbers have not really changed.
+
+Invariant mass:
+$$
+	m^{2} = 714.3^{2} + \begin{bmatrix}
+	638.2 \\
+	117.5
+	\end{bmatrix}^{2} =89119
+$$
+Once again, just as far from 0.248 as in the previous case
+
+Attempting to measure the incoming beam yields very inconsistent results. So I will stick with the assumption that it is roughly 
