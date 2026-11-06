@@ -123,17 +123,59 @@ Notes on the procedure:
 	- High optical density is indicative of $K$ or $p$
 	- Track length is 27 cm before stopping. Much further than anything in figure 1
 	- This particle must be positively charged (because it's curving downwards), so it looks like either $K^+$ or $p$. However, $K^+$ would eventually decay into another particle, which doesn't happen. The resulting particles would be charged, and so visible in the tank
+## Top prong
+The energy from the pion and proton should be about:
+$$
+	\sqrt{ p^{2}_{p} + m^{2}_{p} } + \sqrt{ p^{2}_{\pi} + m^{2}_{\pi} } \approx \sqrt{ 507^{2}+938^{2} } + \sqrt{ 186^{2}+140^{2} } \approx 1299
+$$
+Using conservation of momentum, the energy from a $\Lambda$ (my guess) should be roughly:
+$$
+	\sqrt{ p^{2}_{\Lambda} + m^{2}_{\Lambda} } \approx \sqrt{ 687^{2}+1116^{2} } \approx 1310
+$$
+So the energy, in this case, is conserved.
 
-Assuming the bottom two prongs are a $\pi^\pm$ pair, then the invariant mass is:
+Recall the definition of the invariant mass:
 $$
-	m^{2} = \left( \sum E_{i} \right)^{2} + \left( \sum p_{i} \right)^{2}
+	m^{2} = \left( \sum E_{i} \right)^{2} - \left( \sum \vec{p}_{i} \right)^{2}
 $$
-The energy in each particle is:
+Compute the summation of the momentum. Where $\begin{bmatrix}\text{parallel} & \text{perpendicular}\end{bmatrix}$.
 $$
-	E^{2}=p^{2}+m^{2} \implies E = \sqrt{ p^{2}+m^{2} }
+	\sum \vec{p}_{i} \approx \begin{bmatrix}
+	185.8 \\
+	17.5
+	\end{bmatrix} + \begin{bmatrix}
+	468.0 \\
+	195.6
+	\end{bmatrix} \approx \begin{bmatrix}
+	653.9 \\
+	213.1
+	\end{bmatrix}
 $$
-For the pions this is approximately:
+Square,
 $$
-	E\approx\sqrt{ p^{2}+139.57^{2} }
+	\left( \sum \vec{p}_{i} \right)^{2} = 472841
 $$
-For the top, negative particle this works out to about 234 and for the top, positive 526. The mass of the $\Lambda$ particle (my guess) is 1115.6. Which, using conservation of momentum, should have an energy of about 1310. Which is way off from the 760.
+So the invariant mass is:
+$$
+	m^{2} \approx 1310^{2} - 472841 \approx 1243259
+$$
+Which, swapping units, is $m^{2}=1.243$. Which is very close to the invariant mass of $\Lambda$, 1.245
+## Bottom prong
+For the bottom prong, I am guessing a decay from $K^{0}_{S}$ to a $\pi^+\pi^-$ pair. The energy (in this case):
+$$
+	\sqrt{ p^{2}_{+}+m^{2}_{+} }+\sqrt{ p^{2}_{-}+m^{2}_{-} } \approx \sqrt{ 406.9^{2} + 139.6^{2} } + \sqrt{ 249.2^{2} + 139.6^{2} } \approx 715.8
+$$
+Using conservation of momentum, the energy in the $K^0_{S}$ would be:
+$$
+	\sqrt{ p^{2}_{K}+m^{2}_{K} } \approx \sqrt{ 647.3^{2} + 497.7^{2} } \approx 816.5
+$$
+Which looks relatively reasonable?
+
+Try computing the invariant mass:
+$$
+	m^{2} \approx 715.8^{2} - \begin{bmatrix}
+	629.9 \\
+	148.8
+	\end{bmatrix}^{2} \approx 93.379
+$$
+Adjusting for units, this is $m^{2}=0.0933$, which is not even close to the invariant mass of $K^0$, 0.248. In fact, this is not even close to anything that is listed on the (provided) table of particles.

@@ -25,3 +25,23 @@ Discussion with TA
 - Keep up progress on energy conservation
 
 # 11:49 End
+
+# More Preliminary Discussion
+- Did I go through the $\gamma$ conversion part?
+
+## $\gamma$ Conversions
+- 1.022 MeV is specifically the mass of two electrons, or an electron positron pair. Photons have approximately zero mass, so they need precisely this much energy to convert
+- I don't really know what would stop this from taking place in a vacuum, but maybe I'm missing something. Is it because matter cannot be made in a vacuum?
+## Neutral strange particle decays
+The ionization in the bubble chamber resulting from $\gamma$ conversion must be minimum ionizing because the photon may only convert into an electron and position. Both of which may only have $\pm1$ charge, and relatively low momentum (compared to the other heavier particles)
+
+Neutral strange particle decays will decay into particles heavier than photons. These particles may perhaps decay into other lighter particles. Furthermore, they have several decay modes. Using the results of the decay, we can try to determine what the neutral particle is.
+
+- Strangeness isn't conserved, but a bunch of other things should be, right?
+- Photons and neutral particles don't show up in the bubble chamber, so both look like they appear from nothing
+## Secondary Interactions
+![[Pasted image 20261105222728.png]]
+A possible secondary interaction where this particle has bounced off a proton.
+
+![[Pasted image 20261105223531.png]]
+Two examples of what might be secondary interactions here
