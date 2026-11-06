@@ -52,3 +52,43 @@ Where $g\to g\sin\alpha$. Just to simplify the notation. Combining these two:
 $$
 	\dot{I}\omega = -\nu \omega + gr \int_{0}^{2\pi} \sin\theta m(\theta, t) \, d\nu
 $$
+Recall that $Q(\theta)$ is given, since we control it. Lets say that $Q(\theta)$ is an even function.
+
+Express $Q(\theta)$ and $m(\theta, t)$ as their Fourier transforms:
+$$
+	\begin{align}
+	Q(\theta) & = \sum_{n\geq 0} q_{n}\cos(n\theta) \\
+	m(\theta, t) & = \sum_{n\geq 0} a_{n}(t)\sin(n\theta) + b_{n}(t) \cos(n\theta)
+	\end{align}
+$$
+Where $q_{n}$ is some constant.
+
+Substituting these into the continuity equation we derived. We find that:
+$$
+	\begin{align}
+	\dot{a}_{n} & = -Ka_{1} +  n\omega b_{n} \\
+	\dot{b}_{n} & = q_{n}-Kb_{n} - n\omega a_{n}
+	\end{align}
+$$
+Doing the same for the torque we get:
+$$
+	I\dot{\omega}=-\nu \omega + \pi gra_{1}
+$$
+Since just the first Fourier coefficient survives.
+- These equations can then be used to solve for each coefficient, and predict how the system might behave
+
+So what are the fixed points? Well, we can find one of them at:
+$$
+	\omega^{2}+K^{2} = \frac{\pi grq_{1}}{\nu}
+$$
+This models the simple cases with the water wheel rotating.
+- Not sure what type of rotation. But we are not interested in this one
+
+For the next section, we will compare the equations we have obtained with the Lorenz equations:
+$$
+	\begin{align}
+	\dot{x} & = \sigma(y-x) \\
+	\dot{y} & = rx-xz-y \\
+	\dot{z} & = xy-bz
+	\end{align}
+$$
