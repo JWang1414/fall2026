@@ -66,29 +66,60 @@ Where $q_{n}$ is some constant.
 Substituting these into the continuity equation we derived. We find that:
 $$
 	\begin{align}
-	\dot{a}_{n} & = -Ka_{1} +  n\omega b_{n} \\
-	\dot{b}_{n} & = q_{n}-Kb_{n} - n\omega a_{n}
+	\dot{a}_{n} & = n\omega b_{n} - Ka_{n} \\
+	\dot{b}_{n} & = -n\omega a_{n} - Kb_{n} + q_{n}
 	\end{align}
 $$
 Doing the same for the torque we get:
 $$
 	I\dot{\omega}=-\nu \omega + \pi gra_{1}
 $$
-Since just the first Fourier coefficient survives.
-- These equations can then be used to solve for each coefficient, and predict how the system might behave
+By orthogonality, just this one term survives.
 
-So what are the fixed points? Well, we can find one of them at:
+Now $a_{1}$, $b_{1}$, and $\omega$ form a closed system, so they are decoupled from all other $a_{n}, b_{n}$ where $n\neq 1$. So the resulting equations we have for the first coefficients are:
 $$
-	\omega^{2}+K^{2} = \frac{\pi grq_{1}}{\nu}
+	\begin{align}
+	\dot{a}_{1} & = \omega b_{1} - Ka_{1} \\
+	\dot{b}_{1} & = -\omega a_{1} - Kb_{1} + q_{1} \\
+	\dot{\omega} & = (-\nu \omega + \pi gra_{1}) /I
+	\end{align}
 $$
-This models the simple cases with the water wheel rotating.
-- Not sure what type of rotation. But we are not interested in this one
+This system, if you look closely, is equivalent to the Lorenz equations.
 
-For the next section, we will compare the equations we have obtained with the Lorenz equations:
+Setting all the derivatives to zero to find the fixed points:
+$$
+	\begin{align}
+	a_{1} & = \omega b_{1} /K \\
+	\omega a_{1} & = q_{1}-Kb_{1} \\
+	a_{1} & = \nu \omega /\pi gr
+	\end{align}
+$$
+There are two variations of fixed point to consider here. From the first and second equations we find:
+$$
+	b_{1} = \frac{Kq_{1}}{\omega^{2}+K^{2}}
+$$
+However, from the first and third we get:
+$$
+	\frac{\omega b_{1}}{K} = \frac{\nu \omega}{\pi gr} \implies \omega=0 \implies b_{1}=\frac{K\nu}{\pi gr}
+$$
+The one with $\omega=0$ is the fixed point without rotation. The wheel remains at rest at $(0, q_{1} /K, 0)$.
+
+In the other case we have,
+$$
+	b_{1} = \frac{Kq_{1}}{\omega^{2}+K^{2}} = \frac{K\nu}{\pi gr} \implies \omega^{2} = \frac{\pi grq_{1}}{\nu} - K^{2}
+$$
+If the right-side is positive, there are two solutions $\pm \omega^*$, which correspond with steady rotation in either direction. These solutions exist if and only if:
+$$
+	\frac{\pi grq_{1}}{K^{2}\nu}>1
+$$
+- This number is called the Rayleigh number. It measures how hard the system is driven, relative to the dissipation
+
+Next time, we begin our study of the Lorenz equations:
 $$
 	\begin{align}
 	\dot{x} & = \sigma(y-x) \\
-	\dot{y} & = rx-xz-y \\
+	\dot{y} & = rx-y-xz \\
 	\dot{z} & = xy-bz
 	\end{align}
 $$
+Where $\sigma, r, b>0$ are parameters. $\sigma$ is the Prandtl number, and $r$ is the Rayleigh number.
