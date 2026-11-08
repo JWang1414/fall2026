@@ -6,39 +6,45 @@ Notes on the procedure:
 - I tried to take several measurements of the angles this time, to help establish some uncertainty
 	- Maybe the same thing can be done for the momentum?
 
-(Bottom two prongs. Decay from neutral particle)
+(Bottom two prongs. Decay from neutral particle) (This one is old)
 
-- Track Momentum: 406.85484 +/- 15.96625 (Stat) +/- 30.82234 (Cal) [MeV/c]
-- Opening Angle
-	- 19.96381 +/- 1.40901
-	- 21.25640 +/- 1.40901
-- Optical density
-	- 149.38363 +/- 100.50939 [1/cm] (with dL=1.0)
-	- 241.67976 +/- 94.30003 [1/cm] (with dL=2.0)
-	- 326.08176 +/- 87.45500 [1/cm] (with dL=3.0)
-	- 402.70924 +/- 80.98934 [1/cm] (with dL=4.0)
-	- 471.13701 +/- 76.39356 [1/cm] (with dL=5.0)
-	- 533.01108 +/- 73.81980 [1/cm] (with dL=6.0)
-	- 589.61341 +/- 72.71750 [1/cm] (with dL=7.0)
-	- 642.13275 +/- 72.99277 [1/cm] (with dL=8.0)
-	- 691.95623 +/- 74.32406 [1/cm] (with dL=9.0)
-	- 740.38303 +/- 76.36898 [1/cm] (with dL=10.0)
+Track Momentum
+	242.01569 +/- 1.47168 (Stat) +/- 18.33452 (Cal) [MeV/c]
+	251.12558 +/- 3.18667 (Stat) +/- 19.02466 (Cal) [MeV/c]
+Opening Angle
+	181.73053 +/- 0.05223
+	180.23657 +/- 0.05223
+Optical density
+	148.37537 +/- 98.66591 [1/cm] (with dL=1.0)
+	240.46419 +/- 92.11164 [1/cm] (with dL=2.0)
+	324.91712 +/- 85.30299 [1/cm] (with dL=3.0)
+	401.72597 +/- 79.88951 [1/cm] (with dL=4.0)
+	470.95276 +/- 74.92062 [1/cm] (with dL=5.0)
+	532.91609 +/- 72.69082 [1/cm] (with dL=6.0)
+	589.86116 +/- 71.16817 [1/cm] (with dL=7.0)
+	642.18277 +/- 71.81646 [1/cm] (with dL=8.0)
+	691.97613 +/- 72.91086 [1/cm] (with dL=9.0)
+	739.70573 +/- 74.99151 [1/cm] (with dL=10.0)
+- Positively charged
 
-- Track Momentum: 249.19803 +/- 8.40517 (Stat) +/- 18.87864 (Cal) [MeV/c]
-- Opening Angle
-	- 181.71751 +/- 0.28707
-	- 180.87125 +/- 0.28707
-- Optical density
-	- 150.53352 +/- 98.70432 [1/cm] (with dL=1.0)
-	- 243.48801 +/- 92.90297 [1/cm] (with dL=2.0)
-	- 329.20980 +/- 85.64086 [1/cm] (with dL=3.0)
-	- 406.00543 +/- 79.79565 [1/cm] (with dL=4.0)
-	- 474.71064 +/- 74.89477 [1/cm] (with dL=5.0)
-	- 536.44212 +/- 72.35377 [1/cm] (with dL=6.0)
-	- 592.75450 +/- 71.05694 [1/cm] (with dL=7.0)
-	- 644.70400 +/- 71.10872 [1/cm] (with dL=8.0)
-	- 693.85527 +/- 72.74518 [1/cm] (with dL=9.0)
-	- 741.55197 +/- 74.65759 [1/cm] (with dL=10.0)
+Track Momentum
+	391.28966 +/- 75.66226 (Stat) +/- 29.64316 (Cal) [MeV/c]
+	424.09228 +/- 25.49127 (Stat) +/- 32.12820 (Cal) [MeV/c]
+Opening Angle
+	15.46078 +/- 6.52720
+	16.79336 +/- 6.52720
+Optical density
+	131.43937 +/- 89.05936 [1/cm] (with dL=1.0)
+	211.91538 +/- 83.53134 [1/cm] (with dL=2.0)
+	285.64619 +/- 76.99085 [1/cm] (with dL=3.0)
+	352.42285 +/- 72.68423 [1/cm] (with dL=4.0)
+	413.27865 +/- 68.72578 [1/cm] (with dL=5.0)
+	467.68938 +/- 65.51299 [1/cm] (with dL=6.0)
+	516.78055 +/- 64.85956 [1/cm] (with dL=7.0)
+	562.72136 +/- 64.65999 [1/cm] (with dL=8.0)
+	606.62220 +/- 65.97681 [1/cm] (with dL=9.0)
+	649.18077 +/- 67.61867 [1/cm] (with dL=10.0)
+- Negatively charged
 
 - I think that these two particles are a $\pi^\pm$ pair. The optical densities of both particles is almost identical, and both particles appear to be stable
 	- The first particle (bottom one) travels incredible far in the tank. I do not think it will decay
@@ -198,4 +204,4 @@ $$
 $$
 Once again, just as far from 0.248 as in the previous case
 
-Attempting to measure the incoming beam yields very inconsistent results. So I will stick with the assumption that it is roughly 
+Attempting to measure the incoming beam yields very inconsistent results. So I will stick with the assumption that it is roughly 10.3 MeV
