@@ -6,7 +6,24 @@ Notes on the procedure:
 - I tried to take several measurements of the angles this time, to help establish some uncertainty
 	- Maybe the same thing can be done for the momentum?
 
-(Bottom two prongs. Decay from neutral particle) (This one is old)
+(Incoming)
+
+Track Momentum
+	10032.10753 +/- 307.81194 (Stat) +/- 760.00815 (Cal) [MeV/c]
+	10006.47585 +/- 238.02314 (Stat) +/- 758.06635 (Cal) [MeV/c]
+Optical density
+	131.35654 +/- 84.60859 [1/cm] (with dL=1.0)
+	213.80938 +/- 79.41050 [1/cm] (with dL=2.0)
+	290.11792 +/- 73.80219 [1/cm] (with dL=3.0)
+	359.35421 +/- 68.96737 [1/cm] (with dL=4.0)
+	421.67173 +/- 65.53877 [1/cm] (with dL=5.0)
+	477.98807 +/- 63.58252 [1/cm] (with dL=6.0)
+	529.42638 +/- 62.98024 [1/cm] (with dL=7.0)
+	577.24399 +/- 63.60708 [1/cm] (with dL=8.0)
+	622.74024 +/- 65.02837 [1/cm] (with dL=9.0)
+	666.78757 +/- 67.00983 [1/cm] (with dL=10.0)
+
+(Bottom two prongs. Decay from neutral particle)
 
 Track Momentum
 	242.01569 +/- 1.47168 (Stat) +/- 18.33452 (Cal) [MeV/c]
