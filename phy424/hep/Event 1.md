@@ -66,6 +66,7 @@ Optical density
 - I think that these two particles are a $\pi^\pm$ pair. The optical densities of both particles is almost identical, and both particles appear to be stable
 	- The first particle (bottom one) travels incredible far in the tank. I do not think it will decay
 	- The second particle appears to cause a secondary reaction, where two more charged particles are released. Originally, I thought this might have been charged particle decay, but the particles in the vertex are heavier than the incoming particle (based on their vastly increased optical density)
+	- The relative optical density of both particles is roughly 1 with the incoming beam of $\pi^-$ particles.
 - If these two are indeed a $\pi^\pm$ pair, then I suspect that the neutral particle here is a $K^0_{S}$. Which has $\pi^+\pi^-$ as its most common decay mode with ~69%
 
 (Middle prong. Main vertex)
@@ -143,7 +144,7 @@ Optical density
 	- 1218.71599 +/- 123.86016 [1/cm] (with dL=9.0)
 	- 1293.56498 +/- 125.97534 [1/cm] (with dL=10.0)
 - I think that this particle is a proton:
-	- High optical density is indicative of $K$ or $p$
+	- High optical density is indicative of $K$ or $p$. The relative optical density of this particle with the incoming beam is 2.
 	- Track length is 27 cm before stopping. Much further than anything in figure 1
 	- This particle must be positively charged (because it's curving downwards), so it looks like either $K^+$ or $p$. However, $K^+$ would eventually decay into another particle, which doesn't happen. The resulting particles would be charged, and so visible in the tank
 ## Top prong
@@ -222,3 +223,11 @@ $$
 Once again, just as far from 0.248 as in the previous case
 
 Attempting to measure the incoming beam yields very inconsistent results. So I will stick with the assumption that it is roughly 10.3 MeV
+# Including Uncertainties
+Accounting for uncertainties the momentum in the bottom and top neutral particles are $649\pm 611 (\text{Stat}) \pm 610(\text{Cal})$ and $688\pm 23(\text{Stat})\pm 41(\text{Cal})$, respectively.
+
+Interestingly, it appears that the uncertainties for the bottom prong are several times larger than the uncertainties for the top prong. This lends some credence to the idea that the bottom prong may indeed be $K^0_{S}$, considering the comparatively large uncertainties, even if the energy conservation may not be exact.
+
+Considering the small uncertainties for measurements in the top prong, I can be much more confident in my guess of $\Lambda\to p+\pi^-$. The energy conservation and invariant mass almost exactly match that of $\Lambda$, and the uncertainties corroborate that the errors should be very small.
+
+I am going to move on, and instead begin a short analysis of event 2 now.
