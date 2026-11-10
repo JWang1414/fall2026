@@ -19,9 +19,30 @@ Quick sample calculation for the focus length of the lens I am using. The focal 
 
 The focal length from these rough measurements is:
 $$
-	\frac{1}{f} = \frac{1}{S_\text{image}} + \frac{1}{S_\text{obj}} \implies f = \left( \frac{1}{S_\text{image}} + \frac{1}{_\text{obj}} \right)^{-1}
+	\frac{1}{f} = \frac{1}{S_\text{image}} + \frac{1}{S_\text{obj}} \implies f = \left( \frac{1}{S_\text{image}} + \frac{1}{S_\text{obj}} \right)^{-1}
 $$
 $$
 	\approx \left( \frac{1}{23.3} + \frac{1}{6.65} \right)^{-1} = 5.17345576
 $$
 Including the uncertainties, this is $5.17\pm0.09$.
+- Something to note, the focal length on this lens is comparatively quite large for most of the microscopes we will be using in this lab. The ones that I have are 25 mm and 35 mm focal length. This one is 50 mm.
+
+11:51
+
+ThorCam Tools:
+
+The horizontal and vertical line profiles show you the intensity across some horizontal or vertical line of the camera output. This is particularly useful for calibrating the camera exposure time, since it gives you an objective measurement to base your adjustments on.
+- The lab notes claim that ~80% maximum intensity is where you want to be
+- I have been using the auto-exposure option, and adjusting from there (I turn it on and off)
+
+Other similar looks include the histogram (which shows you the distribution of intensities in the image) and "pixel peek" which shows you the values of the pixels your mouse is hovering over.
+- The histogram can probably be used similarly to the line profiles
+- I'm not sure what the pixel peek might be good for
+
+Most other tools include annotations, image adjustments (like rotations). Nothing so interesting.
+
+I have no idea what "Analysis Region of Interest" does. It seems to just put a square on the image I cannot remove.
+
+Tricks for focusing the microscope:
+- The camera and lens do not have a mechanism to make fine adjustments, but the sample does. This appears to be the only guaranteed way to make minute adjustments
+- One can tighten or untighten the lens on its stand. This will move it forwards and backwards very slowly, but it also shakes the image quite a lot.
