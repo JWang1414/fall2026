@@ -1,0 +1,27 @@
+Our analysis today is centred around using DFS as a method for cycle detection.
+# White Path Theorem
+> For all graphs $G$ and all DFS of $G$, if and only if $v$ becomes a descendant of $u$, then at the time $d[u]$ discovers $u$, there is a path from $u$ to $v$ in $G$ that consists entirely of white nodes
+
+Lets prove this theorem!
+
+Consider any $G$ and any DFS of $G$.
+
+Suppose $v$ is a descendant of $u$ in this DFS. Let $u\to u_{1}\to\dots\to u_{j}\to u_{k}\to v$ be the DFS discovery path from $u$ to $v$.
+
+Well, at the time $d[u]$ when $u$ is discovered, all other nodes on that path have net yet been discovered.
+- This is because discovered nodes are not traveled
+
+So, this is an all white path.
+
+Now the other way. Suppose at time $d[u]$ when $u$ is discovered, there is a path from $u$ to $v$ consisting of all white nodes.
+
+To show this, we will try to show all nodes in this path become descendants of $u$. We will use proof by contradiction. Assume there is a some node in the path doesn't become a descendant of $u$.
+
+Call $z$ the closest node to $u$ that is not a descendant of $u$, and $w$ be the node just before $z$. Note that by definition $w$ is a descendant of $u$, or $w=u$.
+
+From here we may uncover a number of facts.
+1. $d[u]<d[z]$. That is, $u$ must have been discovered before $z$. The path is white, after all.
+2. $d[z]<f[w]$. $z$ is a descendant of $w$, and so $z$ must be discovered for $w$ to be completed
+3. $f[w]\leq f[u]$. Which is from the fact that $u$ is a descendant of $w$. Or alternatively $w=u$.
+
+- Missing something here
