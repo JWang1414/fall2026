@@ -24,4 +24,4 @@ From here we may uncover a number of facts.
 2. $d[z]<f[w]$. $z$ is a descendant of $w$, and so $z$ must be discovered for $w$ to be completed
 3. $f[w]\leq f[u]$. Which is from the fact that $u$ is a descendant of $w$. Or alternatively $w=u$.
 
-- Missing something here
+- Complete these notes
