@@ -24,4 +24,18 @@ From here we may uncover a number of facts.
 2. $d[z]<f[w]$. $z$ is a descendant of $w$, and so $z$ must be discovered for $w$ to be completed
 3. $f[w]\leq f[u]$. Which is from the fact that $u$ is a descendant of $w$. Or alternatively $w=u$.
 
-- Complete these notes
+Stringing together these facts we have $d[u]<d[z]<f[u]$.
+
+The only configuration where this is possible is $d[u]<d[z]<f[z]<f[u]$. Which necessarily means that $z$ is a descendant of $u$.
+# Theorem 22.11
+> For all directed graphs $G$ and all DFS of $G$: $G$ has a cycle $\iff$ DFS of $G$ has a back edge
+
+We begin by assuming the DFS of $G$ has a back edge. $(v, u)$.
+
+Then, necessarily $v$ must be a descendant of $u$. Which, by the White path theorem, means that there exists a path from $u$ to $v$ in the DFS forest. Hence there is a cycle from $u$ to $v$, and back to $u$.
+
+Now, suppose that $G$ has a cycle $C$. Let $u$ be the first node in $C$ discovered by the DFS. Define $v$ to be the node before $u$ in $C$.
+
+Now, at time $d[u]$ when $u$ is discovered, at other nodes in $C$ are white ($u$ is the first to be explored). By white-path theorem, $v$ must be a descendant of $u$ in the DFS.
+
+Hence, when $v$ is explored, $(v, u)$ must also be explored. Since $v$ is a descendant of $u$, $(v, u)$ must be a back edge.
