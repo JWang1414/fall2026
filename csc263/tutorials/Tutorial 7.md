@@ -47,4 +47,8 @@ What about if $(u, v)$ is a cross edge? Well there are two cases:
 $$
 	d[u]<f[u]<d[v]<f[v] \qquad d[v]<f[v]<d[u]<f[u]
 $$
-- The proof is shown in the second case, but not in the first. I didn't quite catch why we can throw out the first case.
+If $v$ is grey, then this must be a back edge, and if $v$ is white, then this must be a forward edge. Therefore, $v$ must be black. So $v$ was already discovered before $u$. There is only one valid case left:
+$$
+	d[v]<f[v]<d[u]<f[u] \implies f[u]>f[v]
+$$
+As needed.
