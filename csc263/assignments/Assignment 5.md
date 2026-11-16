@@ -42,3 +42,49 @@ $$
 # Question 2
 ---
 a.
+1. $\Theta(\log n)$, for $S$ of size $n$. Binary search cuts the array in half each step. The total number of cuts is at most order $\log n$
+2. $\Theta(n)$, for $S$ of size $n$. $x$ must be inserted into the array, and at most $n$ elements must be shifted one over to accommodate the new element
+
+Compute the worst case time for $n$ insertions.
+$$
+	\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+$$
+The amortized insertion time is therefore:
+$$
+	\frac{1}{n} \frac{n(n+1)}{2} = \frac{n+1}{2} \in \Theta(n)
+$$
+---
+b.
+The first instance:
+$$
+	\{ [4], [2, 6, 7, 11] \}
+$$
+The second instance:
+$$
+	\{ [16], [2, 7], [0, 5, 9, 11] \}
+$$
+---
+c.
+Use binary search to search through each sorted array $A_{i}$ one by one. The worst-case runtime will be:
+$$
+	\sum_{i=0}^{k-1} b_{i} \log(2^{i}) = \sum_{i=0}^{k-1} ib_{i}
+$$
+Notice that the runtime for each array $A_{i}$ is $\log(2^{i})$. In the worst-case scenario, all $b_{i}=1$.
+$$
+	= \sum_{i=0}^{k-1} i = \frac{k(k-1)}{2} \in O(k^{2})
+$$
+The worst-case time complexity is therefore $O(\log ^{2}n)$
+- I don't think I need these calculations here. Might be over-complicating this question
+
+---
+d.
+If $b_{0}=0$, then $A_{0}$ is empty, and $x$ may be inserted into $A_{0}$. Otherwise, $x$ must be Merged (as in MergeSort) with the currently existing element in $A_{0}$. Once this is complete, Merge the modified $A_{0}$ with $A_{1}$. Repeat this sequence of Merging $A_{i}$ with $A_{i+1}$ until $b_{i+2}=0$. That is, until there is no $A_{i+2}$ to chain Merges into.
+
+Assume each Merge operation completes in $O(n)$ time, where $n$ is the length of the arrays being merged together. The worst-case runtime is:
+$$
+	\sum_{i=0}^{k-1} b_{i} 2^{i} = \sum_{i=0}^{k-1} 2^{i} = 2^{k}-1 \in O(2^{k})
+$$
+Notice the runtime of each Merge operation is $2^{i}$. Using the fact that $k=O(\log n)$, the worst-case time complexity is $O(n)$.
+
+---
+e.
