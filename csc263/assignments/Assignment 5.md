@@ -88,3 +88,71 @@ Notice the runtime of each Merge operation is $2^{i}$. Using the fact that $k=O(
 
 ---
 e.
+
+# Question 3
+---
+a.
+## Explanation
+Example of an adjacency matrix with $n=6$ nodes. 5 is the leader node. Notice that all elements $(i, i)=0$, since there are no self loops.
+$$
+	\begin{bmatrix}
+	0 & 1 & 0 & 1 & 1 & 0 \\
+	1 & 0 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 1 \\
+	0 & 1 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 0
+	\end{bmatrix}
+$$
+Some facts about leader nodes. Which I will denote as $l$:
+1. All values along the row $l$ are 0
+2. All values along the column $l$ are 1. Except for $(l, l)$
+
+What follows from facts 1 and 2 is the following observation: If a non-leader node has a row of all '0's, or a column of all '1's, then there cannot be a leader node. This is simply because the existence of a leader node would render such a non-leader node impossible.
+- Not sure if this line is needed anymore
+
+To search for the leader node, I will maintain a direct access array of "leader candidates" $LC$ of size $\lvert V \rvert$. For some index $1\leq i\leq \lvert V \rvert$, $LC[i]=1$ indicates that node $i$ might be a leader node, and $LC[i]=0$ indicates that node $i$ cannot be a leader node.
+
+I begin by reading the first row, skipping over elements on the diagonal, because they must be 0. If element $i$ on the first row is 1, then $LC[i]=1$. Otherwise, $LC[i]=0$. Furthermore, if there is a 1 found on the first row, $LC[1]=0$. Repeat this process on row 2, 3, and so on, until reaching the end of the adjacency matrix.
+
+If there is a candidate left, then this is the leader. Otherwise, there is no leader.
+
+For example, after reading the first row in my example, the candidates would be 2, 4, and 5. Or $LC=[0, 1, 0, 1, 1, 0]$. In the following row, it is limited to just $LC=[0, 0, 0, 0, 1, 0]$. This remains the case until the algorithm terminates, and declares node 5 is the leader node.
+## Pseudo-code
+```
+LC = [1] * |V|
+
+# Find the leader node
+for row = 1...|V|:
+	for col = 1...|V|:
+		# Skip diagonals
+		if row = col: continue
+		
+		# Update leader candidates
+		current = A[row, col]
+		LC[col] = LC[col] and current
+		LC[row] = LC[row] and !current
+
+# Print the results
+for i = 1...|V|:
+	if LC[i]:
+		print(i)
+print("G has no leader node")
+```
+## Proof
+- Do this later
+---
+b.
+In the worst-case, my algorithm will read through every element in $A$ one time, excluding the elements along the diagonal. There are $\lvert V \rvert^{2}$ elements in $A$, and $\lvert V \rvert$ elements along the diagonal. The exact number of accesses is therefore $n^{2}-n$. In fact, it will take this long every time.
+
+The worst-case time complexity is therefore $\Theta(n^{2})$
+
+---
+c.
+I will use the same approach as in my previous algorithm. This time, the array will count the number of edges $(u, v)$ that point towards some node $v$. Once again, it will be a direct access array of size $\lvert V \rvert$, called $PT$.
+
+Looping through each edge $(u, v)$ in $L$, every time $v$ appears, increment $PT[v]$ by 1. Each time $u$ appears, set $PT[u]=-\infty$. At the end of the algorithm if some node $a$ is the leader node, then $PT[a]=\lvert V \rvert-1$.
+
+This occurs because in order for $a$ to be the leader node, there must be no edges $(u, v)$ where $u=a$. Furthermore, the $\lvert V \rvert-1$ nodes must all have edges pointing towards $a$, which will be found in the adjacency list.
+
+In the worst-case, my algorithm will access all the edges in $L$. This will take exactly $\lvert E \rvert$ time. The runtime is therefore $\Theta(m)$.
