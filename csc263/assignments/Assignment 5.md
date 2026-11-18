@@ -11,7 +11,7 @@ To prove a credit invariant, I require:
 
 Proof by Induction.
 
-Define a sequence of operations (Add or Reduce) $\sigma$ of length $k$.
+Define the series of Add or Reduce operations $\sigma$ of length $k$.
 
 Base case: $k=0$
 
@@ -39,11 +39,105 @@ For $k$ operations, the amortized cost is therefore:
 $$
 	\frac{2\alpha k}{k} = 2\alpha \in O(1)
 $$
+# Question 3
+---
+a.
+## Explanation
+Example of an adjacency matrix with $n=6$ nodes. 5 is the leader node. Notice that all elements $(i, i)=0$, since there are no self loops.
+$$
+	\begin{bmatrix}
+	0 & 1 & 0 & 1 & 1 & 0 \\
+	1 & 0 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 1 \\
+	0 & 1 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 0
+	\end{bmatrix}
+$$
+Facts about the leader node $l$:
+1. All values along the row $l$ are 0
+2. All values along the column $l$ are 1. Except for $(l, l)$
+
+What follows from facts 1 and 2 is the following observation: If a non-leader node has a row of all '0's, or a column of all '1's, then there cannot be a leader node. This is simply because the existence of a leader node would render such a non-leader node impossible.
+
+To search for the leader node, I will maintain a direct access array of "leader candidates" $LC$ of size $\lvert V \rvert$. For some index $1\leq i\leq \lvert V \rvert$, $LC[i]=1$ indicates that node $i$ might be a leader node, and $LC[i]=0$ indicates that node $i$ cannot be a leader node.
+
+I begin by reading the first row, skipping over elements on the diagonal, because they must be 0. If element $i$ on the first row is 1, then $LC[i]=1$. Otherwise, $LC[i]=0$. Furthermore, if there is a 1 found on the first row, $LC[1]=0$. Repeat this process on row 2, 3, and so on, until reaching the end of the adjacency matrix.
+
+The final element remaining in $LC$ is the leader node. If $LC$ is empty, then there is no leader node.
+
+For example, after reading the first row in my example, the candidates would be 2, 4, and 5. Or $LC=[0, 1, 0, 1, 1, 0]$. In the following row, it is limited to just $LC=[0, 0, 0, 0, 1, 0]$. This remains the case until the algorithm terminates, and declares node 5 is the leader node.
+## Pseudo-code
+```
+LC = [1] * |V|
+
+# Find the leader node
+for row = 1...|V|:
+	for col = 1...|V|:
+		# Skip diagonals
+		if row = col: continue
+		
+		# Update leader candidates
+		current = A[row, col]
+		LC[col] = LC[col] and current
+		LC[row] = LC[row] and !current
+
+# Print the results
+for i = 1...|V|:
+	if LC[i]:
+		print(i)
+print("G has no leader node")
+```
+## Proof
+I claim the following invariant: The leader node is always an element of $LC$. Proof by induction.
+
+Base case: Before running
+
+$LC$ contains all the nodes, and so trivially contains the leader node, if it exists.
+
+Inductive step: Assume, after $n$ steps, the leader node is contained within $LC$. Show the leader node is contained after $n+1$ steps.
+
+Case 1: Current row is all zeroes
+- Then node $n+1$ must be the leader node, or there are no leader nodes.
+- If $LC$ included $n+1$ as a leader candidate previously, then it is the only remaining node in $LC$. Otherwise, $LC$ is empty.
+- Therefore, if there is a leader node, $LC$ contains the leader node. Otherwise, there is no leader node. In both cases, $LC$ contains the leader node.
+Case 2: Current row has '1's
+- Then node $n+1$ cannot be the leader, and is removed from $LC$.
+- All leader candidates contained in $LC$ that include a '1' in the current row are possibly leader nodes. All other nodes are removed from $LC$.
+- $LC$ contains the leader node.
+
+In all cases, $LC$ contains the leader node. As needed.
+
+Furthermore, I claim that at the end of my algorithm, $LC$ may have at most 1 element. Proof by contradiction:
+
+Assume that $LC$ has more than 1 element upon terminating. Then there must be 2 rows of all '0's, and 2 columns of all '1's. This implies that there are two leader nodes in $G$. Which, by the uniqueness of the leader node, is not possible.
+
+Therefore, the length of $LC$ after searching through $A$ must be 0 or 1. By the loop invariant, if $LC\equiv\emptyset$ then there is no leader node. Otherwise, the last node contained in $LC$ must be the leader node.
+
+Combining lemma 1 and the loop invariant, $LC$ must contain the leader node, or nothing at all. As needed.
+
+
+---
+b.
+In the worst-case, my algorithm will read through every element in $A$ one time, excluding the elements along the diagonal. There are $\lvert V \rvert^{2}$ elements in $A$, and $\lvert V \rvert$ elements along the diagonal. The exact number of accesses is therefore $n^{2}-n$. In fact, it will take this long every time.
+
+The worst-case time complexity is therefore $\Theta(n^{2})$
+
+---
+c.
+I will use the same approach as in my previous algorithm. This time, the array will count the number of edges $(u, v)$ that point towards some node $v$. Once again, it will be a direct access array of size $\lvert V \rvert$, called $PT$.
+
+Looping through each edge $(u, v)$ in $L$, every time $v$ appears, increment $PT[v]$ by 1. Each time $u$ appears, set $PT[u]=-\infty$. At the end of the algorithm if some node $a$ is the leader node, then $PT[a]=\lvert V \rvert-1$.
+
+This occurs because in order for $a$ to be the leader node, there must be no edges $(u, v)$ where $u=a$. Furthermore, the $\lvert V \rvert-1$ nodes must all have edges pointing towards $a$, which will be found in the adjacency list.
+
+In the worst-case, my algorithm will access all the edges in $L$. This will take exactly $\lvert E \rvert$ time. The runtime is therefore $\Theta(m)$.
 # Question 2
 ---
 a.
-1. $\Theta(\log n)$, for $S$ of size $n$. Binary search cuts the array in half each step. The total number of cuts is at most order $\log n$
-2. $\Theta(n)$, for $S$ of size $n$. $x$ must be inserted into the array, and at most $n$ elements must be shifted one over to accommodate the new element
+
+1. Binary search cuts the array in half each step. The total number of cuts is at most order $\log n$. So the runtime is $\Theta(\log n)$.
+2. $x$ must be inserted into the array, and at most $n$ elements must be shifted one over to accommodate the new element. This shifting will take $\Theta(n)$ time.
 
 Compute the worst case time for $n$ insertions.
 $$
@@ -74,7 +168,6 @@ $$
 	= \sum_{i=0}^{k-1} i = \frac{k(k-1)}{2} \in O(k^{2})
 $$
 The worst-case time complexity is therefore $O(\log ^{2}n)$
-- I don't think I need these calculations here. Might be over-complicating this question
 
 ---
 d.
@@ -84,75 +177,18 @@ Assume each Merge operation completes in $O(n)$ time, where $n$ is the length of
 $$
 	\sum_{i=0}^{k-1} b_{i} 2^{i} = \sum_{i=0}^{k-1} 2^{i} = 2^{k}-1 \in O(2^{k})
 $$
-Notice the runtime of each Merge operation is $2^{i}$. Using the fact that $k=O(\log n)$, the worst-case time complexity is $O(n)$.
+Notice the runtime of each Merge operation is $2^{i}$. Using the fact that $k=O(\log n)$, the worst-case time complexity is $O(2^{\log_{2}n})=O(n)$
+
+---
+f.
+Begin by searching the smallest sorted array $A_{i}$ in $L$ for the largest value $z<x$. Save the position of $z$, and Search for $x$. Then, swap $z$ and $x$, and remove $x$ from $A_{i}$. Since $A_{i}$ is the smallest array, when $x$ is removed, $A_{i}$ may be split into $i$ sorted sub-arrays, which need not be merged, and so can be inserted back into $L$ in constant time.
+
+In the worst-case it will take $O(n)$ time to find $z$, and $O(\log ^{2}n)$ time to find $x$. Then, it will take constant time to swap $z$ and $x$, remove $x$, and insert the remains of $A_{i}$ back into $L$. The runtime will therefore be:
+$$
+	O(n) + O(\log ^{2}n) + 3 \times O(1)
+$$
+Which is equivalent to $O(n)$ time.
 
 ---
 e.
-
-# Question 3
----
-a.
-## Explanation
-Example of an adjacency matrix with $n=6$ nodes. 5 is the leader node. Notice that all elements $(i, i)=0$, since there are no self loops.
-$$
-	\begin{bmatrix}
-	0 & 1 & 0 & 1 & 1 & 0 \\
-	1 & 0 & 0 & 0 & 1 & 0 \\
-	0 & 0 & 0 & 0 & 1 & 1 \\
-	0 & 1 & 0 & 0 & 1 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 1 & 0
-	\end{bmatrix}
-$$
-Some facts about leader nodes. Which I will denote as $l$:
-1. All values along the row $l$ are 0
-2. All values along the column $l$ are 1. Except for $(l, l)$
-
-What follows from facts 1 and 2 is the following observation: If a non-leader node has a row of all '0's, or a column of all '1's, then there cannot be a leader node. This is simply because the existence of a leader node would render such a non-leader node impossible.
-- Not sure if this line is needed anymore
-
-To search for the leader node, I will maintain a direct access array of "leader candidates" $LC$ of size $\lvert V \rvert$. For some index $1\leq i\leq \lvert V \rvert$, $LC[i]=1$ indicates that node $i$ might be a leader node, and $LC[i]=0$ indicates that node $i$ cannot be a leader node.
-
-I begin by reading the first row, skipping over elements on the diagonal, because they must be 0. If element $i$ on the first row is 1, then $LC[i]=1$. Otherwise, $LC[i]=0$. Furthermore, if there is a 1 found on the first row, $LC[1]=0$. Repeat this process on row 2, 3, and so on, until reaching the end of the adjacency matrix.
-
-If there is a candidate left, then this is the leader. Otherwise, there is no leader.
-
-For example, after reading the first row in my example, the candidates would be 2, 4, and 5. Or $LC=[0, 1, 0, 1, 1, 0]$. In the following row, it is limited to just $LC=[0, 0, 0, 0, 1, 0]$. This remains the case until the algorithm terminates, and declares node 5 is the leader node.
-## Pseudo-code
-```
-LC = [1] * |V|
-
-# Find the leader node
-for row = 1...|V|:
-	for col = 1...|V|:
-		# Skip diagonals
-		if row = col: continue
-		
-		# Update leader candidates
-		current = A[row, col]
-		LC[col] = LC[col] and current
-		LC[row] = LC[row] and !current
-
-# Print the results
-for i = 1...|V|:
-	if LC[i]:
-		print(i)
-print("G has no leader node")
-```
-## Proof
-- Do this later
----
-b.
-In the worst-case, my algorithm will read through every element in $A$ one time, excluding the elements along the diagonal. There are $\lvert V \rvert^{2}$ elements in $A$, and $\lvert V \rvert$ elements along the diagonal. The exact number of accesses is therefore $n^{2}-n$. In fact, it will take this long every time.
-
-The worst-case time complexity is therefore $\Theta(n^{2})$
-
----
-c.
-I will use the same approach as in my previous algorithm. This time, the array will count the number of edges $(u, v)$ that point towards some node $v$. Once again, it will be a direct access array of size $\lvert V \rvert$, called $PT$.
-
-Looping through each edge $(u, v)$ in $L$, every time $v$ appears, increment $PT[v]$ by 1. Each time $u$ appears, set $PT[u]=-\infty$. At the end of the algorithm if some node $a$ is the leader node, then $PT[a]=\lvert V \rvert-1$.
-
-This occurs because in order for $a$ to be the leader node, there must be no edges $(u, v)$ where $u=a$. Furthermore, the $\lvert V \rvert-1$ nodes must all have edges pointing towards $a$, which will be found in the adjacency list.
-
-In the worst-case, my algorithm will access all the edges in $L$. This will take exactly $\lvert E \rvert$ time. The runtime is therefore $\Theta(m)$.
+I suspect that the amortized cost is $O(\log n)$. However, I cannot prove it.

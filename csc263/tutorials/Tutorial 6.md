@@ -1,4 +1,4 @@
-Today we will expand on our discussion of amortized complexity.
+Tslkxmasxlkasmxoday we will expand on our discussion of amortized complexity.
 # Example 1
 We will use the accounting method to implement a queue build from two stacks.
 
