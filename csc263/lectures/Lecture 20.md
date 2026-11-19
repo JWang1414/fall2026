@@ -34,7 +34,7 @@ while |MST_edges| < n-1 do
 
 Recall from tutorial BuildMinHeap(E) can be done in $O(m)$ time (since there are $m$ edges). Furthermore, it will trivially take $O(n)$ time to make $n$ singleton sets.
 
-In the worst-case, the while loop will run $m$ times. This is the number of loops required to search through all the edges. First, I will discuss the time complexity of each operation inside of the loop (on its own).
+In the worst-case, the while loop will run $m$ times. This is the number of loops required to search through all the edges. First, I will discuss the time complexity of each operation inside of the loop (on its own]).
 
 It will take $\log \lvert E \rvert$ time to run Extract_Min(E). However, this is equivalent to:
 $$
