@@ -16,3 +16,23 @@ Notice that $e_{2}\neq e_{1}\implies e_{2}\in B\implies e_{2}\in\text{diff}(A, B
 Define a new tree $B^*$ which is $B'$ with $e_{2}$ removed. This breaks the cycle $C$, resulting in another spanning tree. However, $B^*$ must necessarily be a lighter spanning tree than $B$. QED
 # Prim's Algorithm
 Begin from one node in $G$, and grow edges one by one to construct a minimum spanning tree.
+
+In our implementation, we will maintain a direct access array $\text{closest}[1\dots n]$ where $\text{closest}[u]$ is the node from $T^*$ connected to $u$ with the minimum weight.
+
+MSTPrim(G)
+	$T^*_\text{node}=\{ v \}$
+	$T^*_\text{edge}=\{  \}$
+	$\text{closest}=[v, v,\dots, v]$
+	while $\lvert T^*_\text{node} \rvert<n$:
+		$\text{next}=\text{null}$
+		$\text{min-cost}=\infty$
+		for $u\in V(G)-T^*_\text{node}$
+			if $w(u, \text{closest}[u]) <\text{min-cost}$
+				$\text{next}=u$
+				$\text{min-cost}=w(u, \text{closest}[u])$
+		$T^*_\text{node}=T^*_\text{node}\cup \{ \text{next} \}$
+		$T^*_\text{edge}=T^*_\text{edge}\cup \{ \text{next}, \text{closest}[u] \}$
+		for $u\in V(G)-T^*_\text{node}$
+			if $w(u, \text{closest}[u]) >w(u, \text{next})$
+				$\text{closest}[u]=\text{next}$
+	return $(T^*_\text{node}), T^*_\text{edge}$
