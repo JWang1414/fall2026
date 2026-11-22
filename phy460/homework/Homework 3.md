@@ -174,6 +174,7 @@ As needed.
 # Question 6
 ![[Pasted image 20261121230809.png]]
 ![[Pasted image 20261121230816.png]]
+
 I define $0<K_\text{min}<\min\{ K(t) \}$ and $K_\text{max}>\max\{ K(t) \}$. This is possible because $K(t)$ is a positive, smooth function.
 
 Note that in this region, $N>0$ because $K_\text{min}>0$. Therefore the flow $\dot{N}$ is positive along $K_\text{min}$:
@@ -189,4 +190,5 @@ Consider a trajectory at begins at $n=K_\text{min}$. Then, because the flow is u
 $P(n)$ must be a continuous, monotonic function. This arises because $\dot{N}$ is smooth, and if $P(n)$ were not monotonic, two trajectories would cross, or overlap.
 
 Then, by the intermediate value theorem, $P(n)$ must cross the 45 degree diagonal at some point $n^*$ such that $n^*=P(n^*)$.
+
 ![[Pasted image 20261121235340.png]]
