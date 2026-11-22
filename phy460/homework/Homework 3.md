@@ -102,3 +102,91 @@ y = r * sin(theta)
 # Plot images of x(t) and y(t)
 ...
 ```
+# Question 5
+![[Pasted image 20261121165850.png]]
+- Independent of $\theta$. I will therefore focus exclusively on $r$
+
+Find fixed points:
+$$
+	r(\mu-\sin r)=0 \implies r=0, \mu-\sin r=0
+$$
+$$
+	\sin r=\mu
+$$
+- Clearly, there is a permanent fixed point at $r=0$
+- When $-1<\mu<1$, there is an infinite number of fixed points. The bifurcations occur at $\mu=1$ and $\mu=-1$.
+- When $\mu\to-1$ from below, or $\mu\to 1$ from above, the movement along the $r$-axis grows increasingly jerky around where the fixed points will appear
+- Since $\dot{\theta}=1$, solutions will go around and around in cycles
+
+In the regime where $\mu<-1$, there is just one fixed point at the origin. It is globally attracting.
+
+When $\mu=-1$, the bifurcation occurs. All at once, semi-stable fixed points occur at points where $\sin r=-1$. That is, starting at $3\pi /2$, and repeating every interval of $2\pi$. Between these fixed points, solutions are attracted to the centre, but they stop at the semi-stable fixed points.
+
+When $-1<\mu<1$ the semi-stable fixed points split into stable/unstable pairs, in an infinite series of saddle-node bifurcations As $\mu$ grows closer and closer to either $-1$ or $1$, the fixed points get closer to each other, preparing to annihilate each other.
+
+When $\mu=1$ the fixed points collide, becoming a series of semi-stable fixed points at points where $\sin r=1$, which begin at $\pi /2$, and repeat at intervals of $2\pi$. The behaviour now has reversed however. The system is repelling, pushing solutions away into further semi-stable fixed points, as opposed to pulling them to the centre.
+
+When $\mu>1$, there is once again just one fixed point at the origin. It is globally repelling.
+# Question 1 (Not done)
+---
+1.
+Define $y=\dot{x}$ so the original equation becomes:
+$$
+	\dot{y} + \alpha \lvert y \rvert y + \sin x = \Gamma
+$$
+So the system of equations is:
+$$
+	\begin{align}
+	\dot{x} & = y \\
+	\dot{y} & = \Gamma- \alpha \lvert y \rvert y - \sin x
+	\end{align}
+$$
+Fixed points appear along $y=0$ and $\alpha \lvert y \rvert y+\sin x=\Gamma$. Fixed points therefore appear under the condition that $\sin x=\Gamma$.
+
+Rough work:
+$$
+	\begin{bmatrix}
+	0 & 1 \\
+	-\cos x & -2\alpha \lvert y \rvert 
+	\end{bmatrix}
+$$
+Fixed points appear when $y=0$ so this becomes
+$$
+	\begin{bmatrix}
+	0 & 1 \\
+	-\cos x & 0
+	\end{bmatrix}
+$$
+Which is the linear centre we were looking for
+- Unsure how to find the Liapunov function
+---
+2a.
+Note that:
+$$
+	\frac{du}{dt} = \frac{1}{2} \left( \frac{dx}{dt} \right)^{2} = \frac{dx}{dt} \frac{d^{2}x}{dt^{2}}
+$$
+By chain rule:
+$$
+	\frac{du}{dx} = \frac{du}{dt} \frac{dt}{dx} = \frac{dx}{dt} \frac{d^{2}x}{dt^{2}} \frac{dt}{dx} = \frac{d^{2}x}{dt^{2}}
+$$
+As needed.
+
+# Question 6
+![[Pasted image 20261121230809.png]]
+![[Pasted image 20261121230816.png]]
+I define $0<K_\text{min}<\min\{ K(t) \}$ and $K_\text{max}>\max\{ K(t) \}$. This is possible because $K(t)$ is a positive, smooth function.
+
+Note that in this region, $N>0$ because $K_\text{min}>0$. Therefore the flow $\dot{N}$ is positive along $K_\text{min}$:
+$$
+	\dot{N} = rN\left( 1-\frac{N}{K(t)} \right) = rN\left( 1-\frac{K_\text{min}}{K(t)} \right)>0
+$$
+Using the same argument the flow is negative along $K_\text{max}$.
+
+Since this equation is $T$-periodic in $t$. I bound this problem within $K_\text{min}$, $K_\text{max}$, 0, and $T$. Furthermore, I define the Poincare map which maps some initial point $n$ to $P(n)$. I want to show that there is some fixed point $n^*=P(n^*)$.
+
+Consider a trajectory at begins at $n=K_\text{min}$. Then, because the flow is upwards along the entirety of $K_\text{min}$, $P(K_\text{min})>K_\text{min}$. Using the same argument, we also have $P(K_\text{max})<K_\text{max}$.
+
+$P(n)$ must be a continuous, monotonic function. This arises because $\dot{N}$ is smooth, and if $P(n)$ were not monotonic, two trajectories would cross, or overlap.
+
+Then, by the intermediate value theorem, $P(n)$ must cross the 45 degree diagonal at some point $n^*$ such that $n^*=P(n^*)$.
+![[Pasted image 20261121235340.png]]
