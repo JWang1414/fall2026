@@ -127,50 +127,6 @@ When $-1<\mu<1$ the semi-stable fixed points split into stable/unstable pairs, i
 When $\mu=1$ the fixed points collide, becoming a series of semi-stable fixed points at points where $\sin r=1$, which begin at $\pi /2$, and repeat at intervals of $2\pi$. The behaviour now has reversed however. The system is repelling, pushing solutions away into further semi-stable fixed points, as opposed to pulling them to the centre.
 
 When $\mu>1$, there is once again just one fixed point at the origin. It is globally repelling.
-# Question 1 (Not done)
----
-1.
-Define $y=\dot{x}$ so the original equation becomes:
-$$
-	\dot{y} + \alpha \lvert y \rvert y + \sin x = \Gamma
-$$
-So the system of equations is:
-$$
-	\begin{align}
-	\dot{x} & = y \\
-	\dot{y} & = \Gamma- \alpha \lvert y \rvert y - \sin x
-	\end{align}
-$$
-Fixed points appear along $y=0$ and $\alpha \lvert y \rvert y+\sin x=\Gamma$. Fixed points therefore appear under the condition that $\sin x=\Gamma$.
-
-Rough work:
-$$
-	\begin{bmatrix}
-	0 & 1 \\
-	-\cos x & -2\alpha \lvert y \rvert 
-	\end{bmatrix}
-$$
-Fixed points appear when $y=0$ so this becomes
-$$
-	\begin{bmatrix}
-	0 & 1 \\
-	-\cos x & 0
-	\end{bmatrix}
-$$
-Which is the linear centre we were looking for
-- Unsure how to find the Liapunov function
----
-2a.
-Note that:
-$$
-	\frac{du}{dt} = \frac{1}{2} \left( \frac{dx}{dt} \right)^{2} = \frac{dx}{dt} \frac{d^{2}x}{dt^{2}}
-$$
-By chain rule:
-$$
-	\frac{du}{dx} = \frac{du}{dt} \frac{dt}{dx} = \frac{dx}{dt} \frac{d^{2}x}{dt^{2}} \frac{dt}{dx} = \frac{d^{2}x}{dt^{2}}
-$$
-As needed.
-
 # Question 6
 ![[Pasted image 20261121230809.png]]
 ![[Pasted image 20261121230816.png]]
@@ -192,3 +148,25 @@ $P(n)$ must be a continuous, monotonic function. This arises because $\dot{N}$ i
 Then, by the intermediate value theorem, $P(n)$ must cross the 45 degree diagonal at some point $n^*$ such that $n^*=P(n^*)$.
 
 ![[Pasted image 20261121235340.png]]
+Use the change of variables $x=N^{-1}$:
+$$
+	\dot{N} = -\frac{\dot{x}}{x^{2}} \qquad rN\left( 1-\frac{N}{K(t)} \right) = \frac{r}{x}\left( 1-\frac{1}{xK(t)} \right)
+$$
+So the original equation becomes:
+$$
+	\dot{x}+rx = \frac{r}{K(t)}
+$$
+Solve this ODE with an integrating factor:
+$$
+	\begin{align}
+	\dot{x}+rx & = \frac{r}{K(t)} \\
+	e^{ rt }\dot{x} + re^{ rt }x & = \frac{re^{ rt }}{K(t)} \\
+	\frac{d}{dt}e^{ rt }x & = \frac{re^{ rt }}{K(t)}
+	\end{align}
+$$
+Integrating both sides and solving for $x(t)$ reveals:
+$$
+	x(t) = e^{ -rt } \left( \int \frac{re^{ rt }}{K(t)} \, dt +C \right)
+$$
+Which has a unique solution because $K(t)$ is a positive, smooth function.
+- This solution is the limit cycle the system converges to
