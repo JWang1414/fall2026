@@ -28,7 +28,7 @@ $$
 	\dot{v} & = \frac{h^{2}}{m^{2}r^{3}}-\frac{k}{m}
 	\end{align}
 $$
-Compute the Jacobian matri`x
+Compute the Jacobian matrix
 $$
 	\begin{bmatrix}
 	0 & 1 \\
@@ -48,4 +48,13 @@ $$
 Irrational number. Therefore quasiperiodicity.
 
 ![[Pasted image 20261123183011.png]]
+
+According to the previous parts, $\omega_{r}$, $\omega_{\theta}$, and consequently the winding number are all constant. The winding number, which is necessarily a rational or irrational number, corresponds with periodic and quasiperiodic oscillations in $r(t)$ and $\theta(t)$.
+
+Essentially, $r(t)$ and $\theta(t)$ may be plotted on a torus with no chaos, as predicted by the winding number.
+
 ![[Pasted image 20261123183018.png]]
+
+Notice that the angular velocity $\dot{\theta}$ is inversely proportional to the radius of rotation such that $\dot{\theta}\propto r^{-2}$. Additionally, the radial acceleration $\ddot{r}$ appears similar to what you might expect from a spring.
+
+I propose this system be modelled by a mass $m$ attached to a spring so the central force is $k$. This entire system is set to rotate, perhaps in some manner of centrifuge. Another possible realization might replace the spring with a magnet, and the mass with a charged object. However it accomplishes the same thing.
