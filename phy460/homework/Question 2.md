@@ -28,7 +28,7 @@ $$
 	\dot{v} & = \frac{h^{2}}{m^{2}r^{3}}-\frac{k}{m}
 	\end{align}
 $$
-Compute the Jacobian matrix
+Compute the Jacobian matrix:
 $$
 	\begin{bmatrix}
 	0 & 1 \\
