@@ -39,3 +39,22 @@ $$
 	\frac{du}{dx} = \frac{du}{dt} \frac{dt}{dx} = \frac{dx}{dt} \frac{d^{2}x}{dt^{2}} \frac{dt}{dx} = \frac{d^{2}x}{dt^{2}}
 $$
 As needed.
+
+---
+2b.
+
+Rough work:
+
+The solution to the linear ODE is:
+$$
+	u(x) = \frac{\Gamma+4\alpha^{2}\Gamma + 2\alpha \cos x-4\alpha^{2}\sin x}{8\alpha^{3}+2a} + c_{1} e^{ -2ax }
+$$
+The exponential will decay to zero as $x\to \infty$, so I assume that the limit cycle is this first segment:
+$$
+	u(x) = \frac{\Gamma+4\alpha^{2}\Gamma + 2\alpha \cos x-4\alpha^{2}\sin x}{8\alpha^{3}+2a}
+$$
+Which is indeed periodic, since the only non-constant section is:
+$$
+	2\alpha(\cos x-2\alpha \sin x)
+$$
+- I suppose in the last section I am trying to find the point where this limit cycle comes into contact with the $x$-axis at $u(x)=0$?
