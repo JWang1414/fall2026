@@ -64,3 +64,5 @@ $$
 $$
 And you can see that this recursive pattern continues on forever.
 - Note that I have dropped any notation indicating the re-scaling between each equation. These re-scalings still exist, it's just very clunky to say every single equation is being written in a new scale
+- We are also ignoring higher order terms here
+- We are effectively noting that in higher and higher order terms the physics and general ideas of what's going on are the same (up to some re-scaling)
