@@ -170,3 +170,174 @@ $$
 $$
 Which has a unique solution because $K(t)$ is a positive, smooth function.
 - This solution is the limit cycle the system converges to
+# Question 1
+---
+1.
+Define $y=\dot{x}$ so the original equation becomes:
+$$
+	\dot{y} + \alpha \lvert y \rvert y + \sin x = \Gamma
+$$
+So the system of equations is:
+$$
+	\begin{align}
+	\dot{x} & = y \\
+	\dot{y} & = \Gamma- \alpha \lvert y \rvert y - \sin x
+	\end{align}
+$$
+Fixed points appear along $y=0$ and $\alpha \lvert y \rvert y+\sin x=\Gamma$. Fixed points therefore appear under the condition that $\sin x=\Gamma$. Compute the Jacobian matrix to classify these fixed points:
+$$
+	\begin{bmatrix}
+	0 & 1 \\
+	-\cos x & -2\alpha \lvert y \rvert 
+	\end{bmatrix} =
+	\begin{bmatrix}
+	0 & 1 \\
+	-\cos x & 0
+	\end{bmatrix}
+$$
+Which has eigenvalues $\pm i\sqrt{ \cos x }$. Note that since $x$ is an angle, it is necessarily bounded by $0<x<2\pi$. So the fixed points occur at $\arcsin\Gamma$ and $\pi-\arcsin\Gamma$.
+
+For the fixed point $x=\pi-\arcsin\Gamma$, $\cos x<0$ and the two eigenvalues are real with opposite signs. This is therefore a saddle. In the case where $x=\arcsin\Gamma$, $\cos x>0$ and the fixed point is predicted to be a linear centre. I will use the Lyapunov function $V=y^{2} /2-\Gamma x-\cos x$ to show that this is a stable spiral.
+$$
+	\begin{align}
+	\dot{V} & = y\dot{y} - \Gamma \dot{x} + \dot{x} \sin x \\
+	 & = y(\Gamma- \alpha \lvert y \rvert y - \sin x) - \Gamma y + y\sin x \\
+	 & = -\alpha \lvert y \rvert y^{2}
+	\end{align}
+$$
+$\dot{V}<0$ for all $y\neq 0$, and $\dot{y}=\Gamma-\sin x\neq 0$ on the line where $y=0$. I conclude that this is a stable spiral.
+
+---
+2a.
+Note that:
+$$
+	\frac{du}{dt} = \frac{1}{2} \left( \frac{dx}{dt} \right)^{2} = \frac{dx}{dt} \frac{d^{2}x}{dt^{2}}
+$$
+By chain rule:
+$$
+	\frac{du}{dx} = \frac{du}{dt} \frac{dt}{dx} = \frac{dx}{dt} \frac{d^{2}x}{dt^{2}} \frac{dt}{dx} = \frac{d^{2}x}{dt^{2}}
+$$
+As needed.
+
+---
+2b.
+Multiply both sides by $e^{ 2\alpha x }$ after a small re-arrangement:
+$$
+	\begin{align}
+	\frac{du}{dx} + 2\alpha u & =\Gamma-\sin x \\
+	e^{ 2\alpha x } \frac{du}{dx} + 2\alpha e^{ 2\alpha x }u & = e^{ 2\alpha x }(\Gamma-\sin x) \\
+	\frac{d}{dx}ue^{ 2\alpha x } & = e^{ 2\alpha x }(\Gamma-\sin x)
+	\end{align}
+$$
+Integrate both sides to obtain a general representation for $u(x)$:
+$$
+	\begin{align}
+	\int_{0}^{x} \frac{d}{dx'}ue^{ 2\alpha x' } \, dx'  & = \int_{0}^{x} e^{ 2\alpha x' }(\Gamma-\sin x') \, dx' \\
+	u(x)e^{ 2\alpha x } - u(0)  & = \int_{0}^{x} e^{ 2\alpha x' }(\Gamma-\sin x') \, dx'
+	\end{align}
+$$
+Now, $x$ is an angle, and so this system should be periodic over some interval $2\pi$. I will solve for the limit cycle by substituting $x=2\pi$ into the general representation, and requiring $u(0)=u(2\pi)=u_{*}$.
+$$
+	\begin{align}
+	u_{*}(e^{ 4\pi\alpha }-1) & = \int_{0}^{2\pi} e^{ 2\alpha x }(\Gamma-\sin x) \, dx  \\ \\
+	 & = \frac{(4\Gamma\alpha^{2}+2\alpha+\Gamma)(e^{ 4\pi\alpha }-1)}{2\alpha(4\alpha^{2}+1)} \\
+	u_{*} & = \frac{4\Gamma\alpha^{2}+2\alpha+\Gamma}{2\alpha(4\alpha^{2}+1)}
+	\end{align}
+$$
+Using this fixed point as an initial value $u(0)=u_{*}$ reveals the complete equation for the limit cycle:
+$$
+	u(x)e^{ 2\alpha x } - \frac{4\Gamma\alpha^{2}+2\alpha+\Gamma}{2\alpha(4\alpha^{2}+1)} = \int_{0}^{x} e^{ 2\alpha x' }(\Gamma-\sin x') \, dx'
+$$
+The integral on the RHS is:
+$$
+	= e^{ 2\alpha x } \left[ \frac{\Gamma}{2\alpha} - \frac{2\alpha \sin x-\cos x}{4\alpha^{2}+1} \right] - \frac{4\Gamma\alpha^{2}+2\alpha+\Gamma}{2\alpha(4\alpha^{2}+1)}
+$$
+So the expression for the limit cycle simplifies into:
+$$
+	u(x) = \frac{\Gamma}{2\alpha} - \frac{2\alpha \sin x-\cos x}{4\alpha^{2}+1}
+$$
+
+---
+2c.
+Graphically, I note that a homoclinic bifurcation will occur at the point where $u(x)=0$. I am therefore interested in the value of $\Gamma$ such that:
+$$
+	\frac{\Gamma}{2\alpha} = \frac{2\alpha \sin x-\cos x}{4\alpha^{2}+1} \implies \Gamma = \frac{2\alpha(2\alpha \sin x-\cos x)}{4\alpha^{2}+1}
+$$
+To determine $\Gamma_{c}(\alpha)$, this expression must be reduced to be in terms of exclusively $\alpha$. Solve for the extrema of $2\alpha \sin x-\cos x$:
+$$
+	\frac{d}{dx} 2\alpha \sin x-\cos x=0 \implies 2\alpha \cos x+\sin x =0
+$$
+Which has solutions:
+$$
+	x=\pi n-\arctan(2\alpha) \qquad n\in \mathbb{Z}
+$$
+The maximum/minimum values are therefore:
+$$
+	2\alpha \sin(\pi n-\arctan(2\alpha)) - \cos(\pi n-\arctan(2\alpha)) = \pm\sqrt{ 4\alpha^{2}+1 }
+$$
+I conclude:
+$$
+	\Gamma_{c}(\alpha) = \frac{2\alpha \sqrt{ 4\alpha^{2}+1 }}{4\alpha^{2}+1} = \frac{2\alpha}{\sqrt{ 4\alpha^{2}+1 }}
+$$
+I have dropped the case where $\Gamma_{c}<0$ because $\Gamma>0$ by definition.
+# Question 2
+![[Pasted image 20261123182922.png]]
+
+Notice that $r=r_{0}$ implies $\ddot{r}=0$. Substituting this into the system of equations:
+$$
+	0=\frac{h^{2}}{mr_{0}^{3}}-k \qquad \omega_{\theta} = \frac{h}{mr_{0}^{2}}
+$$
+The first equation reveals the value of $r_{0}$:
+$$
+	k=\frac{h^{2}}{mr_{0}^{3}} \implies r_{0}^{3} = \frac{h^{2}}{mk} \implies r_{0} = \left( \frac{h^{2}}{mk} \right)^{1/3}
+$$
+Re-arrange the second equation, and solve for $\omega_{\theta}$ with the help of the first:
+$$
+	r_{0}^{2} = \frac{h}{m\omega_{\theta}} \implies
+	\sqrt{ \frac{h}{m\omega_{\theta}} } = \left( \frac{h^{2}}{mk} \right)^{1/3} \implies
+	\omega_{\theta} = \left( \frac{k^{2}}{hm} \right)^{1/3}
+$$
+So I have:
+$$
+	r_{0}^{3} = \frac{h^{2}}{mk} \qquad \omega_{\theta}^{3}=\frac{k^{2}}{hm}
+$$
+
+![[Pasted image 20261123183000.png]]
+
+Linearize the radial portion of this system into the following representation:
+$$
+	\begin{align}
+	\dot{r} & =v \\
+	\dot{v} & = \frac{h^{2}}{m^{2}r^{3}}-\frac{k}{m}
+	\end{align}
+$$
+Compute the Jacobian matrix:
+$$
+	\begin{bmatrix}
+	0 & 1 \\
+	-3h^{2} /m^{2}r^{4} & 0
+	\end{bmatrix}
+$$
+Which has the eigenvalues $\pm i \sqrt{ 3 }h /mr^{2}$. The frequency of small radial oscillations is therefore:
+$$
+	\omega_{r} = \frac{\sqrt{ 3 }h}{mr_{0}^{2}} = \sqrt{ 3 }\omega_{\theta}
+$$
+
+![[Pasted image 20261123183006.png]]
+
+$$
+	\frac{\omega_{r}}{\omega_{\theta}} = \sqrt{ 3 }
+$$
+Irrational number. Therefore quasiperiodicity.
+
+![[Pasted image 20261123183011.png]]
+
+According to the previous parts, $\omega_{r}$, $\omega_{\theta}$, and consequently the winding number are all constant. The winding number, which is necessarily a rational or irrational number, corresponds with periodic and quasiperiodic oscillations in $r(t)$ and $\theta(t)$.
+
+Essentially, $r(t)$ and $\theta(t)$ may be plotted on a torus with no chaos, as predicted by the winding number.
+
+![[Pasted image 20261123183018.png]]
+
+Notice that the angular velocity $\dot{\theta}$ is inversely proportional to the radius of rotation such that $\dot{\theta}\propto r^{-2}$. Additionally, the radial acceleration $\ddot{r}$ appears similar to what you might expect from a spring.
+
+I propose this system be modelled by a mass $m$ attached to a spring so the central force is $k$. This entire system is set to rotate, perhaps in some manner of centrifuge. Another possible realization might replace the spring with a magnet, and the mass with a charged object. However it accomplishes the same thing.
