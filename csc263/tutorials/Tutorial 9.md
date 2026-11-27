@@ -11,4 +11,6 @@ The next example will be one for merge sort.
 
 The first operation is $[a_{1}],[a_{2}]$, which can be merged into $[a_{1},a_{2}]$ or $[a_{2},a_{1}]$, depending on which one is greater.
 
-- Insert missing images here
+![[IMG_20261127_154911.jpg]]
+![[IMG_20261127_154925.jpg]]
+An image of the partial decision tree drawn for merge sort during the tutorial
